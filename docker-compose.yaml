@@ -1,0 +1,5 @@
+services:
+  auth:
+    image: "auth:latest"
+    ports:
+      - 8081:3000
