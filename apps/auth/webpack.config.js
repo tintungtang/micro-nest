@@ -5,7 +5,7 @@ const path = require('node:path');
 module.exports = {
   output: {
     path: join(__dirname, '../../dist/apps/auth'),
-    filename: 'app.js',
+    filename: 'main.js',
     clean: true
   },
   plugins: [
