@@ -15,9 +15,7 @@
         "jestConfig": "apps/product-e2e/jest.config.ts",
         "passWithNoTests": true
       },
-      "dependsOn": [
-        "product:build"
-      ]
+      "dependsOn": []
     }
   }
 }

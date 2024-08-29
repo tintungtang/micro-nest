@@ -1,4 +1,4 @@
-import { getGreeting } from '../support/app.po';
+import { getGreeting, getTitle } from '../support/app.po';
 
 describe('storefront-e2e', () => {
   beforeEach(() => cy.visit('/'));
@@ -8,6 +8,6 @@ describe('storefront-e2e', () => {
     cy.login('my-email@something.com', 'myPassword');
 
     // Function helper example, see `../support/app.po.ts` file
-    getGreeting().contains(/Welcome/);
+      cy.title().should('eq', 'Storefront')
   });
 });

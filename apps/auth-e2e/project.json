@@ -15,9 +15,7 @@
         "jestConfig": "apps/auth-e2e/jest.config.ts",
         "passWithNoTests": true
       },
-      "dependsOn": [
-        "auth:build"
-      ]
+      "dependsOn": []
     }
   }
 }

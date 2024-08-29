@@ -11,7 +11,7 @@
         "jestConfig": "apps/file-storage-e2e/jest.config.ts",
         "passWithNoTests": true
       },
-      "dependsOn": ["file-storage:build"]
+      "dependsOn": []
     }
   }
 }
