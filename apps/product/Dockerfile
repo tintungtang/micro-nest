@@ -12,7 +12,7 @@ ENV PORT=3000
 WORKDIR /app
 
 RUN addgroup --system product && \
-          adduser --system -G product product
+    adduser --system -G product product
 
 COPY dist/apps/product product/
 RUN chown -R product:product .
@@ -23,4 +23,4 @@ RUN chown -R product:product .
 
 WORKDIR file-storage
 RUN npm install
-CMD ["node", "app.js"]
+CMD ["node", "main.js"]
