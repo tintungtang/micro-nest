@@ -12,7 +12,7 @@ ENV PORT=3000
 WORKDIR /app
 
 RUN addgroup --system file-storage && \
-          adduser --system -G file-storage file-storage
+    adduser --system -G file-storage file-storage
 
 COPY dist/apps/file-storage file-storage/
 RUN chown -R file-storage:file-storage .
@@ -23,4 +23,4 @@ RUN chown -R file-storage:file-storage .
 
 WORKDIR file-storage
 RUN npm install
-CMD ["node", "app.js"]
+CMD ["node", "main.js"]
