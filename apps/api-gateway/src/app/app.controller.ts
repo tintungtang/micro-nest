@@ -1,17 +1,29 @@
-import { Controller, Get, Post, Body, Inject } from '@nestjs/common';
+import { Controller, Get, Inject, Post, Body } from '@nestjs/common';
 import { ClientProxy } from '@nestjs/microservices';
+import { Observable } from 'rxjs';
 
-@Controller('gateway')
-export class GatewayController {
+@Controller()
+export class AppController {
   constructor(
     @Inject('AUTH_SERVICE') private readonly authServiceClient: ClientProxy,
-    @Inject('PRODUCT_SERVICE') private readonly productServiceClient: ClientProxy,
+    @Inject('PRODUCT_SERVICE') private readonly productServiceClient: ClientProxy
   ) {}
- 
+
   @Get('products')
-  getProducts(): Promise<string[]> {
-    console.log('run this');
-    
-    return this.productServiceClient.send<string[]>({ cmd: 'get_products' }, {}).toPromise();
+  getProducts(): Observable<string[]> {
+    return this.productServiceClient.send<string[]>(
+      { cmd: 'get_products' },
+      {}
+    );
+  }
+
+  @Post('login')
+  login(
+    @Body() loginDto: { username: string; password: string }
+  ): Observable<{ access_token: string }> {
+    return this.authServiceClient.send<
+      { access_token: string },
+      { username: string; password: string }
+    >({ cmd: 'login' }, loginDto);
   }
 }

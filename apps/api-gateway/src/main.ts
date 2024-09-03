@@ -10,7 +10,7 @@ async function bootstrap() {
     transport: Transport.TCP,
     options: {
       host: 'localhost',
-      port: 3001,
+      port: 3003,
     },
   });
 
@@ -18,7 +18,7 @@ async function bootstrap() {
     transport: Transport.TCP,
     options: {
       host: 'localhost',
-      port: 3002,
+      port: 3004,
     },
   });
 
@@ -33,9 +33,7 @@ async function bootstrap() {
   SwaggerModule.setup('swagger', app, document);
   const globalPrefix = 'api';
   app.setGlobalPrefix(globalPrefix);
-  console.log('app', app);
-  
-  const port = process.env.PORT || 3000;
+  const port = process.env.PORT || 3005;
   await app.listen(port);
   Logger.log(`🚀 Application is running on: http://localhost:${port}/${globalPrefix}`);
 }
