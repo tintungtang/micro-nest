@@ -7,11 +7,11 @@ import { DocumentBuilder, SwaggerModule } from '@nestjs/swagger';
 async function bootstrap() {
   const app = await NestFactory.createMicroservice<MicroserviceOptions>(AppModule, {
     transport: Transport.TCP,
-    options: { port: 3001 },
+    options: { port: parseInt(process.env.AUTH_SERVICE_PORT, 10) || 3001 },
   });
 
   await app.listen();
-  Logger.log('🚀 Auth Service is running as a microservice on port 3001');
+  Logger.log(`🚀 Auth Service is running as a microservice on port ${process.env.AUTH_SERVICE_PORT ?? 3001}`);
 
   const httpApp = await NestFactory.create(AppModule);
   const config = new DocumentBuilder()

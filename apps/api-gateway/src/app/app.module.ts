@@ -10,16 +10,16 @@ import { AppService } from './app.service';
         name: 'AUTH_SERVICE',
         transport: Transport.TCP,
         options: {
-          host: 'localhost',
-          port: 3001,
+          host: process.env.AUTH_SERVICE_HOST ?? 'localhost',
+          port: parseInt(process.env.AUTH_SERVICE_PORT, 10) ?? 3001,
         },
       },
       {
         name: 'PRODUCT_SERVICE',
         transport: Transport.TCP,
         options: {
-          host: 'localhost',
-          port: 3002,
+          host: process.env.PRODUCT_SERVICE_HOST,
+          port: parseInt(process.env.PRODUCT_SERVICE_PORT, 10) ?? 3002,
         },
       },
     ]),
