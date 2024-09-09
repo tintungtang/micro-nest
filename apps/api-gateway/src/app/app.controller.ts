@@ -6,7 +6,8 @@ import { Observable } from 'rxjs';
 export class AppController {
   constructor(
     @Inject('AUTH_SERVICE') private readonly authServiceClient: ClientProxy,
-    @Inject('PRODUCT_SERVICE') private readonly productServiceClient: ClientProxy
+    @Inject('PRODUCT_SERVICE') private readonly productServiceClient: ClientProxy,
+    @Inject('FILE_STORAGE_SERVICE') private readonly fileStorageServiceClient: ClientProxy
   ) {}
 
   @Get('products')
@@ -26,4 +27,11 @@ export class AppController {
       { username: string; password: string }
     >({ cmd: 'login' }, loginDto);
   }
+
+  @Get('files')
+  getFiles(): Observable<string[]> {
+    return this.fileStorageServiceClient.send<string[]>({ cmd: 'get_files' }, {});
+  }
 }
+
+

@@ -1,33 +1,32 @@
-/**
- * This is not a production server yet!
- * This is only a minimal backend to get started.
- */
-
 import { Logger } from '@nestjs/common';
 import { NestFactory } from '@nestjs/core';
-
+import { MicroserviceOptions, Transport } from '@nestjs/microservices';
 import { AppModule } from './app/app.module';
 import { DocumentBuilder, SwaggerModule } from '@nestjs/swagger';
 
 async function bootstrap() {
-  const app = await NestFactory.create(AppModule);
+  const app = await NestFactory.createMicroservice<MicroserviceOptions>(AppModule, {
+    transport: Transport.TCP,
+    options: { port: parseInt(process.env.FILE_STORAGE_SERVICE_PORT, 10) || 3003 },
+  });
 
+  await app.listen();
+  Logger.log(`🚀 file-storage Service is running as a microservice on port ${process.env.FILE_STORAGE_SERVICE_PORT ?? 3003}`);
+
+  const httpApp = await NestFactory.create(AppModule);
   const config = new DocumentBuilder()
-    .setTitle('File Storage APIs')
-    .setDescription('Document Storage APIs')
+    .setTitle('file-storage APIs')
+    .setDescription('Document file-storage APIs')
     .setVersion('1.0')
     .addTag('v1.0')
     .build();
-  const document = SwaggerModule.createDocument(app, config);
-  SwaggerModule.setup('swagger', app, document);
-
+  const document = SwaggerModule.createDocument(httpApp, config);
+  SwaggerModule.setup('swagger', httpApp, document);
   const globalPrefix = 'api';
-  app.setGlobalPrefix(globalPrefix);
+  httpApp.setGlobalPrefix(globalPrefix);
   const port = process.env.PORT || 3000;
-  await app.listen(port);
-  Logger.log(
-    `🚀 Application is running on: http://localhost:${port}/${globalPrefix}`
-  );
+  await httpApp.listen(port);
+  Logger.log(`🚀 HTTP API is running on: http://localhost:${port}/${globalPrefix}`);
 }
 
-bootstrap().catch(e => console.log(e));
+bootstrap();
