@@ -2,8 +2,8 @@ import { Module } from '@nestjs/common';
 import { ClientsModule, Transport } from '@nestjs/microservices';
 import { AppController } from './app.controller';
 import { AppService } from './app.service';
-
-// Helper function for validation
+import { ThrottlerModule, ThrottlerGuard } from '@nestjs/throttler';
+import { APP_GUARD } from '@nestjs/core';
 const getPort = (port: string | undefined, defaultPort: number): number => {
   const parsedPort = parseInt(port ?? '', 10);
   return isNaN(parsedPort) ? defaultPort : parsedPort;
@@ -37,8 +37,18 @@ const getPort = (port: string | undefined, defaultPort: number): number => {
         },
       },
     ]),
+    ThrottlerModule.forRoot([{
+      limit: 10,
+      ttl: 60000,
+    }]),
   ],
   controllers: [AppController],
-  providers: [AppService],
+  providers: [
+    AppService,
+    {
+      provide: APP_GUARD,
+      useClass: ThrottlerGuard,
+    },
+  ],
 })
 export class GatewayModule {}
