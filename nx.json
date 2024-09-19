@@ -41,7 +41,8 @@
         "apps/training-apis-e2e/**/*",
         "apps/auth-e2e/**/*",
         "apps/product-e2e/**/*",
-        "apps/file-storage-e2e/**/*"
+        "apps/file-storage-e2e/**/*",
+        "apps/api-gateway-e2e/**/*"
       ]
     },
     {
