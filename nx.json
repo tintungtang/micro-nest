@@ -38,7 +38,6 @@
         "targetName": "test"
       },
       "exclude": [
-        "apps/training-apis-e2e/**/*",
         "apps/auth-e2e/**/*",
         "apps/product-e2e/**/*",
         "apps/file-storage-e2e/**/*",
@@ -48,10 +47,10 @@
     {
       "plugin": "@nx/cypress/plugin",
       "options": {
-        "targetName": "e2e",
+        "targetName": "e2e-ui",
         "openTargetName": "open-cypress",
         "componentTestingTargetName": "component-test",
-        "ciTargetName": "e2e-ci"
+        "ciTargetName": "e2e-ui"
       }
     }
   ],

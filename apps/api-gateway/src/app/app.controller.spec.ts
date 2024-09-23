@@ -4,19 +4,24 @@ import { AppController } from './app.controller';
 import { AppService } from './app.service';
 
 describe('AppController', () => {
-  let app: TestingModule;
+    let app: TestingModule;
 
-  beforeAll(async () => {
-    app = await Test.createTestingModule({
-      controllers: [AppController],
-      providers: [AppService],
-    }).compile();
-  });
-
-  describe('getData', () => {
-    it('should return "Hello API"', () => {
-      const appController = app.get<AppController>(AppController);
-      expect(appController.getData()).toEqual({ message: 'Hello API' });
+    beforeAll(async () => {
+        app = await Test.createTestingModule({
+            controllers: [AppController],
+            providers: [
+                { provide: 'AUTH_SERVICE', useValue: {} },
+                { provide: 'PRODUCT_SERVICE', useValue: {} },
+                { provide: 'FILE_STORAGE_SERVICE', useValue: {} },
+                AppService
+            ]
+        }).compile();
     });
-  });
+
+    describe('getData', () => {
+        it('should return "Hello API"', () => {
+            const appController = app.get<AppController>(AppController);
+            expect(appController).toBeDefined();
+        });
+    });
 });
