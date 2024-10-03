@@ -23,6 +23,7 @@
     "@nestjs/swagger": "7.4.0",
     "@nestjs/throttler": "6.2.1",
     "axios": "1.6.0",
+    "mongoose": "8.6.3",
     "reflect-metadata": "0.1.13",
     "rxjs": "7.8.0",
     "tslib": "2.3.0",
