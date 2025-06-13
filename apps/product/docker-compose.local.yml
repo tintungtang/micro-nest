@@ -1,6 +1,3 @@
-# usage:
-# sudo docker-compose build
-# sudo docker-compose up
 services:
     my-mongodb:
         image: mc-nest-product-db-image
@@ -8,8 +5,8 @@ services:
         ports:
             - 27017:27017
         volumes:
-            - mongodb:/Users/tinthai/WebstormProjects/micro-nest/apps/product/data/
-            - mongoconfig:/Users/tinthai/WebstormProjects/micro-nest/apps/product/config
+            - mongodb:${DATA_VOLUME}
+            - mongoconfig:${CONFIG_VOLUME}
         networks:
             - mongo_net
 
