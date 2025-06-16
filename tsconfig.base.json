@@ -22,6 +22,9 @@
             "common/Routes": [
                 "apps/common/src/app/remote-entry/entry.routes.ts"
             ],
+            "common/MfeButton": [
+                "apps/common/src/app/components/mfe-button/mfe-button.ts"
+            ],
             "product-ui/Routes": [
                 "apps/product-ui/src/app/remote-entry/entry.routes.ts"
             ]
