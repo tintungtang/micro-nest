@@ -23,10 +23,12 @@
           }
         ],
         "styles": ["apps/auth-ui/src/styles.scss"],
-        "scripts": [],
-        "customWebpackConfig": {
-          "path": "apps/auth-ui/webpack.config.ts"
-        }
+      "scripts": [],
+      "tailwindConfig": "tailwind.config.js",
+      "postcssConfig": "postcss.config.js",
+      "customWebpackConfig": {
+        "path": "apps/auth-ui/webpack.config.ts"
+      }
       },
       "configurations": {
         "production": {

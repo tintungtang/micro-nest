@@ -58,6 +58,7 @@ micro-nest/
 ## Getting Started
 - NodeJS >= 22
 - npm i
+- The workspace is preconfigured with Tailwind CSS using the TailAdmin template. After installing dependencies, you can immediately use Tailwind classes in any app.
 
 
 ## Running the Project
@@ -126,6 +127,7 @@ nx g @nx/nest:app [appName]
 - Cypress
 - Swagger
 - Docker
+- Tailwind CSS (with TailAdmin template)
 
 ## Contributing
 

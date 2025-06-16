@@ -23,10 +23,12 @@
           }
         ],
         "styles": ["apps/storefront/src/styles.scss"],
-        "scripts": [],
-        "customWebpackConfig": {
-          "path": "apps/storefront/webpack.config.ts"
-        }
+  "scripts": [],
+  "tailwindConfig": "tailwind.config.js",
+  "postcssConfig": "postcss.config.js",
+  "customWebpackConfig": {
+    "path": "apps/storefront/webpack.config.ts"
+  }
       },
       "configurations": {
         "production": {

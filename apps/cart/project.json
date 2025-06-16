@@ -18,8 +18,10 @@
                 "tsConfig": "apps/cart/tsconfig.app.json",
                 "assets": ["apps/cart/src/favicon.ico", "apps/cart/src/assets"],
                 "styles": ["apps/cart/src/styles.scss"],
-                "scripts": [],
-                "webpackConfig": "apps/cart/webpack.config.ts"
+  "scripts": [],
+  "tailwindConfig": "tailwind.config.js",
+  "postcssConfig": "postcss.config.js",
+  "webpackConfig": "apps/cart/webpack.config.ts"
             },
             "configurations": {
                 "development": {
