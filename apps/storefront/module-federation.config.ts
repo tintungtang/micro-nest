@@ -14,7 +14,12 @@ const config: ModuleFederationConfig = {
      * declare module 'my-external-remote';
      *
      */
-    remotes: ['auth-ui', 'product-ui'],
+    remotes: [
+        'auth-ui',
+        'product-ui',
+        ['cart', 'http://localhost:4204/remoteEntry.js'],
+        'common',
+    ],
 };
 
 export default config;

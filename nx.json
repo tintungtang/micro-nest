@@ -75,6 +75,24 @@
                     "env": "NX_MF_DEV_REMOTES"
                 }
             ]
+        },
+        "build": {
+            "cache": true,
+            "dependsOn": ["^build"]
+        },
+        "@nx/webpack:webpack": {
+            "inputs": [
+                "production",
+                "^production",
+                {
+                    "env": "NX_MF_DEV_REMOTES"
+                }
+            ]
+        },
+        "@nx/js:tsc": {
+            "cache": true,
+            "dependsOn": ["^build"],
+            "inputs": ["production", "^production"]
         }
     },
     "generators": {
@@ -83,6 +101,24 @@
             "linter": "eslint",
             "style": "scss",
             "unitTestRunner": "jest"
+        },
+        "@nx/angular:component": {
+            "style": "css"
+        },
+        "@nx/react": {
+            "application": {
+                "babel": true,
+                "style": "scss",
+                "linter": "eslint",
+                "bundler": "webpack"
+            },
+            "component": {
+                "style": "scss"
+            },
+            "library": {
+                "style": "scss",
+                "linter": "eslint"
+            }
         }
     }
 }

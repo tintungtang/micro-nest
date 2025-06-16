@@ -1,7 +1,12 @@
 import { NxWelcomeComponent } from './nx-welcome.component';
 import { Route } from '@angular/router';
+import { CartPipelineComponent } from './pipelines/cart-pipeline/cart-pipeline.component';
 
 export const appRoutes: Route[] = [
+    {
+        path: 'common',
+        loadChildren: () => import('common/Routes').then((m) => m.remoteRoutes),
+    },
     {
         path: 'product-ui',
         loadChildren: () =>
@@ -11,6 +16,14 @@ export const appRoutes: Route[] = [
         path: 'auth-ui',
         loadChildren: () =>
             import('auth-ui/Routes').then((m) => m.remoteRoutes),
+    },
+    {
+        path: 'cart',
+        component: CartPipelineComponent,
+        data: {
+            elementName: 'cart-react-app',
+            loadChildren: () => import('cart/Module'),
+        },
     },
     {
         path: '',
