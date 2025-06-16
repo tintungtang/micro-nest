@@ -4,10 +4,6 @@ import { CartPipelineComponent } from './pipelines/cart-pipeline/cart-pipeline.c
 
 export const appRoutes: Route[] = [
     {
-        path: 'common',
-        loadChildren: () => import('common/Routes').then((m) => m.remoteRoutes),
-    },
-    {
         path: 'product-ui',
         loadChildren: () =>
             import('product-ui/Routes').then((m) => m.remoteRoutes),
