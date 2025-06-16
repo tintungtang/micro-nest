@@ -17,7 +17,8 @@ const config: ModuleFederationConfig = {
     remotes: [
         'auth-ui',
         'product-ui',
-        ['cart', 'http://localhost:4204/remoteEntry.js']
+        ['cart', 'http://localhost:4204/remoteEntry.js'],
+        'shared'
     ],
 };
 

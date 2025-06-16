@@ -38,7 +38,7 @@ micro-nest/
 |-- apps/
 |   |-- app-1-ui/       # Micro-frontend 1 (e.g., User Dashboard)
 |   |-- app-2-ui/       # Micro-frontend 2 (e.g., Admin Panel)
-|   |-- shared/           # Shared components and utilities
+|   |-- shared/           # Shared UI micro-frontend
 |   |-- app-1/            # NestJS micro service
 |-- scripts/              # Utility scripts for project management
 |-- .gitignore            # Git ignore file
