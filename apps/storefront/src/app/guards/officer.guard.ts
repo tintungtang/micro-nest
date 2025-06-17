@@ -4,8 +4,10 @@ import { CanActivateFn, Router } from '@angular/router';
 export const officerGuard: CanActivateFn = () => {
   const router = inject(Router);
   const role = localStorage.getItem('userRole');
-  if (role === 'officer') {
+  // if (role === 'officer') {
+  //   return true;
+  // }
+  // return router.parseUrl('/auth-ui/login');
+
     return true;
-  }
-  return router.parseUrl('/auth-ui/login');
 };

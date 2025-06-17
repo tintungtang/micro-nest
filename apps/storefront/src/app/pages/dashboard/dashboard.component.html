@@ -128,10 +128,10 @@
       Monthly Sales
     </h3>
 
-    <div x-data="{openDropDown: false}" class="relative h-fit">
+    <div class="relative h-fit" (click)="$event.stopPropagation()">
       <button
-        @click="openDropDown = !openDropDown"
-        :class="openDropDown ? 'text-gray-700 dark:text-white' : 'text-gray-400 hover:text-gray-700 dark:hover:text-white'"
+        (click)="toggleDropDown(1, $event)"
+        [ngClass]="openDropDown1 ? 'text-gray-700 dark:text-white' : 'text-gray-400 hover:text-gray-700 dark:hover:text-white'"
       >
         <svg
           class="fill-current"
@@ -150,8 +150,8 @@
         </svg>
       </button>
       <div
-        x-show="openDropDown"
-        @click.outside="openDropDown = false"
+        *ngIf="openDropDown1"
+
         class="absolute right-0 z-40 w-40 p-2 space-y-1 bg-white border border-gray-200 top-full rounded-2xl shadow-theme-lg dark:border-gray-800 dark:bg-gray-dark"
       >
         <button
@@ -194,10 +194,10 @@
           Target you’ve set for each month
         </p>
       </div>
-      <div x-data="{openDropDown: false}" class="relative h-fit">
+      <div class="relative h-fit" (click)="$event.stopPropagation()">
         <button
-          @click="openDropDown = !openDropDown"
-          :class="openDropDown ? 'text-gray-700 dark:text-white' : 'text-gray-400 hover:text-gray-700 dark:hover:text-white'"
+          (click)="toggleDropDown(2, $event)"
+          [ngClass]="openDropDown2 ? 'text-gray-700 dark:text-white' : 'text-gray-400 hover:text-gray-700 dark:hover:text-white'"
         >
           <svg
             class="fill-current"
@@ -216,8 +216,8 @@
           </svg>
         </button>
         <div
-          x-show="openDropDown"
-          @click.outside="openDropDown = false"
+          *ngIf="openDropDown2"
+
           class="absolute right-0 top-full z-40 w-40 space-y-1 rounded-2xl border border-gray-200 bg-white p-2 shadow-theme-lg dark:border-gray-800 dark:bg-gray-dark"
         >
           <button
@@ -354,26 +354,26 @@
 
     <div class="flex items-start w-full gap-3 sm:justify-end">
       <div
-        x-data="{selected: 'overview'}"
+
         class="inline-flex w-fit items-center gap-0.5 rounded-lg bg-gray-100 p-0.5 dark:bg-gray-900"
       >
         <button
-          @click="selected = 'overview'"
-          :class="selected === 'overview' ? 'shadow-theme-xs text-gray-900 dark:text-white bg-white dark:bg-gray-800' : 'text-gray-500 dark:text-gray-400'"
+          (click)="select('overview')"
+          [ngClass]="selected === 'overview' ? 'shadow-theme-xs text-gray-900 dark:text-white bg-white dark:bg-gray-800' : 'text-gray-500 dark:text-gray-400'"
           class="px-3 py-2 font-medium rounded-md text-theme-sm hover:text-gray-900 dark:hover:text-white"
         >
           Overview
         </button>
         <button
-          @click="selected = 'sales'"
-          :class="selected === 'sales' ? 'shadow-theme-xs text-gray-900 dark:text-white bg-white dark:bg-gray-800' : 'text-gray-500 dark:text-gray-400'"
+          (click)="select('sales')"
+          [ngClass]="selected === 'sales' ? 'shadow-theme-xs text-gray-900 dark:text-white bg-white dark:bg-gray-800' : 'text-gray-500 dark:text-gray-400'"
           class="px-3 py-2 font-medium rounded-md text-theme-sm hover:text-gray-900 dark:hover:text-white"
         >
           Sales
         </button>
         <button
-          @click="selected = 'revenue'"
-          :class="selected === 'revenue' ? 'shadow-theme-xs text-gray-900 dark:text-white bg-white dark:bg-gray-800' : 'text-gray-500 dark:text-gray-400'"
+          (click)="select('revenue')"
+          [ngClass]="selected === 'revenue' ? 'shadow-theme-xs text-gray-900 dark:text-white bg-white dark:bg-gray-800' : 'text-gray-500 dark:text-gray-400'"
           class="px-3 py-2 font-medium rounded-md text-theme-sm hover:text-gray-900 dark:hover:text-white"
         >
           Revenue
@@ -429,10 +429,10 @@
       </p>
     </div>
 
-    <div x-data="{openDropDown: false}" class="relative h-fit">
+    <div class="relative h-fit" (click)="$event.stopPropagation()">
       <button
-        @click="openDropDown = !openDropDown"
-        :class="openDropDown ? 'text-gray-700 dark:text-white' : 'text-gray-400 hover:text-gray-700 dark:hover:text-white'"
+        (click)="toggleDropDown(3, $event)"
+        [ngClass]="openDropDown3 ? 'text-gray-700 dark:text-white' : 'text-gray-400 hover:text-gray-700 dark:hover:text-white'"
       >
         <svg
           class="fill-current"
@@ -451,8 +451,8 @@
         </svg>
       </button>
       <div
-        x-show="openDropDown"
-        @click.outside="openDropDown = false"
+        *ngIf="openDropDown3"
+
         class="absolute right-0 top-full z-40 w-40 space-y-1 rounded-2xl border border-gray-200 bg-white p-2 shadow-theme-lg dark:border-gray-800 dark:bg-gray-dark"
       >
         <button
@@ -608,281 +608,7 @@
   </div>
 
   <div class="w-full overflow-x-auto">
-    <table class="min-w-full">
-      <!-- table header start -->
-      <thead>
-        <tr class="border-gray-100 border-y dark:border-gray-800">
-          <th class="py-3">
-            <div class="flex items-center">
-              <p
-                class="font-medium text-gray-500 text-theme-xs dark:text-gray-400"
-              >
-                Products
-              </p>
-            </div>
-          </th>
-          <th class="py-3">
-            <div class="flex items-center">
-              <p
-                class="font-medium text-gray-500 text-theme-xs dark:text-gray-400"
-              >
-                Category
-              </p>
-            </div>
-          </th class="py-3">
-          <th class="py-3">
-            <div class="flex items-center">
-              <p
-                class="font-medium text-gray-500 text-theme-xs dark:text-gray-400"
-              >
-                Price
-              </p>
-            </div>
-          </th>
-          <th class="py-3">
-            <div class="flex items-center col-span-2">
-              <p
-                class="font-medium text-gray-500 text-theme-xs dark:text-gray-400"
-              >
-                Status
-              </p>
-            </div>
-          </th>
-        </tr>
-      </thead>
-      <!-- table header end -->
 
-      <tbody class="divide-y divide-gray-100 dark:divide-gray-800">
-        <tr>
-          <td class="py-3">
-            <div class="flex items-center">
-              <div class="flex items-center gap-3">
-                <div class="h-[50px] w-[50px] overflow-hidden rounded-md">
-                  <img src="./images/product/product-01.jpg" alt="Product" />
-                </div>
-                <div>
-                  <p
-                    class="font-medium text-gray-800 text-theme-sm dark:text-white/90"
-                  >
-                    Macbook pro 13”
-                  </p>
-                  <span class="text-gray-500 text-theme-xs dark:text-gray-400">
-                    2 Variants
-                  </span>
-                </div>
-              </div>
-            </div>
-          </td>
-          <td class="py-3">
-            <div class="flex items-center">
-              <p class="text-gray-500 text-theme-sm dark:text-gray-400">
-                Laptop
-              </p>
-            </div>
-          </td>
-          <td class="py-3">
-            <div class="flex items-center">
-              <p class="text-gray-500 text-theme-sm dark:text-gray-400">
-                $2399.00
-              </p>
-            </div>
-          </td>
-          <td class="py-3">
-            <div class="flex items-center">
-              <p
-                class="rounded-full bg-success-50 px-2 py-0.5 text-theme-xs font-medium text-success-600 dark:bg-success-500/15 dark:text-success-500"
-              >
-                Delivered
-              </p>
-            </div>
-          </td>
-        </tr>
-        <!-- table item -->
-        <tr>
-          <td class="py-3">
-            <div class="flex items-center">
-              <div class="flex items-center gap-3">
-                <div class="h-[50px] w-[50px] overflow-hidden rounded-md">
-                  <img src="./images/product/product-02.jpg" alt="Product" />
-                </div>
-                <div>
-                  <p
-                    class="font-medium text-gray-800 text-theme-sm dark:text-white/90"
-                  >
-                    Apple Watch Ultra
-                  </p>
-                  <span class="text-gray-500 text-theme-xs dark:text-gray-400">
-                    1 Variants
-                  </span>
-                </div>
-              </div>
-            </div>
-          </td>
-          <td class="py-3">
-            <div class="flex items-center">
-              <p class="text-gray-500 text-theme-sm dark:text-gray-400">
-                Watch
-              </p>
-            </div>
-          </td>
-          <td class="py-3">
-            <div class="flex items-center">
-              <p class="text-gray-500 text-theme-sm dark:text-gray-400">
-                $879.00
-              </p>
-            </div>
-          </td>
-          <td class="py-3">
-            <div class="flex items-center">
-              <p
-                class="rounded-full bg-warning-50 px-2 py-0.5 text-theme-xs font-medium text-warning-600 dark:bg-warning-500/15 dark:text-orange-400"
-              >
-                Pending
-              </p>
-            </div>
-          </td>
-        </tr>
-
-        <!-- table item -->
-        <tr>
-          <td class="py-3">
-            <div class="flex items-center">
-              <div class="flex items-center gap-3">
-                <div class="h-[50px] w-[50px] overflow-hidden rounded-md">
-                  <img src="./images/product/product-03.jpg" alt="Product" />
-                </div>
-                <div>
-                  <p
-                    class="font-medium text-gray-800 text-theme-sm dark:text-white/90"
-                  >
-                    iPhone 15 Pro Max
-                  </p>
-                  <span class="text-gray-500 text-theme-xs dark:text-gray-400">
-                    2 Variants
-                  </span>
-                </div>
-              </div>
-            </div>
-          </td>
-          <td class="py-3">
-            <div class="flex items-center">
-              <p class="text-gray-500 text-theme-sm dark:text-gray-400">
-                SmartPhone
-              </p>
-            </div>
-          </td>
-          <td class="py-3">
-            <div class="flex items-center">
-              <p class="text-gray-500 text-theme-sm dark:text-gray-400">
-                $1869.00
-              </p>
-            </div>
-          </td>
-          <td class="py-3">
-            <div class="flex items-center">
-              <p
-                class="rounded-full bg-success-50 px-2 py-0.5 text-theme-xs font-medium text-success-600 dark:bg-success-500/15 dark:text-success-500"
-              >
-                Delivered
-              </p>
-            </div>
-          </td>
-        </tr>
-
-        <!-- table item -->
-        <tr>
-          <td class="py-3">
-            <div class="flex items-center">
-              <div class="flex items-center gap-3">
-                <div class="h-[50px] w-[50px] overflow-hidden rounded-md">
-                  <img src="./images/product/product-04.jpg" alt="Product" />
-                </div>
-                <div>
-                  <p
-                    class="font-medium text-gray-800 text-theme-sm dark:text-white/90"
-                  >
-                    iPad Pro 3rd Gen
-                  </p>
-                  <span class="text-gray-500 text-theme-xs dark:text-gray-400">
-                    2 Variants
-                  </span>
-                </div>
-              </div>
-            </div>
-          </td>
-          <td class="py-3">
-            <div class="flex items-center">
-              <p class="text-gray-500 text-theme-sm dark:text-gray-400">
-                Electronics
-              </p>
-            </div>
-          </td>
-          <td class="py-3">
-            <div class="flex items-center">
-              <p class="text-gray-500 text-theme-sm dark:text-gray-400">
-                $1699.00
-              </p>
-            </div>
-          </td>
-          <td class="py-3">
-            <div class="flex items-center">
-              <p
-                class="rounded-full bg-error-50 px-2 py-0.5 text-theme-xs font-medium text-error-600 dark:bg-error-500/15 dark:text-error-500"
-              >
-                Canceled
-              </p>
-            </div>
-          </td>
-        </tr>
-
-        <!-- table item -->
-        <tr>
-          <td class="py-3">
-            <div class="flex items-center">
-              <div class="flex items-center gap-3">
-                <div class="h-[50px] w-[50px] overflow-hidden rounded-md">
-                  <img src="./images/product/product-05.jpg" alt="Product" />
-                </div>
-                <div>
-                  <p
-                    class="font-medium text-gray-800 text-theme-sm dark:text-white/90"
-                  >
-                    Airpods Pro 2nd Gen
-                  </p>
-                  <span class="text-gray-500 text-theme-xs dark:text-gray-400">
-                    1 Variants
-                  </span>
-                </div>
-              </div>
-            </div>
-          </td>
-          <td class="py-3">
-            <div class="flex items-center">
-              <p class="text-gray-500 text-theme-sm dark:text-gray-400">
-                Accessories
-              </p>
-            </div>
-          </td>
-          <td class="py-3">
-            <div class="flex items-center">
-              <p class="text-gray-500 text-theme-sm dark:text-gray-400">
-                $240.00
-              </p>
-            </div>
-          </td>
-          <td class="py-3">
-            <div class="flex items-center">
-              <p
-                class="rounded-full bg-success-50 px-2 py-0.5 text-theme-xs font-medium text-success-700 dark:bg-success-500/15 dark:text-success-500"
-              >
-                Delivered
-              </p>
-            </div>
-          </td>
-        </tr>
-        <!-- table body end -->
-      </tbody>
-    </table>
   </div>
 </div>
     </div>
