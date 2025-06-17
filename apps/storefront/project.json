@@ -20,10 +20,24 @@
           {
             "glob": "**/*",
             "input": "apps/storefront/public"
-          }
+          },
+            {
+                "glob": "**/*",
+                "input": "apps/storefront/src/theme/images",
+                "output": "assets/images"
+            }
         ],
-        "styles": ["apps/storefront/src/styles.scss"],
-        "scripts": [],
+        "styles": [
+            "apps/storefront/src/theme/css/normalize.css",
+            "apps/storefront/src/theme/css/vendor.css",
+            "apps/storefront/src/theme/css/theme.css",
+            "apps/storefront/src/styles.scss"
+        ],
+        "scripts": [
+            "apps/storefront/src/theme/js/jquery-1.11.0.min.js",
+            "apps/storefront/src/theme/js/modernizr.js",
+            "apps/storefront/src/theme/js/plugins.js"
+        ],
         "customWebpackConfig": {
           "path": "apps/storefront/webpack.config.ts"
         }

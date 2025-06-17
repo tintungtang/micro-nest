@@ -1,0 +1,13 @@
+<section class="py-5">
+  <div class="container-lg">
+    <h2 class="section-title mb-4">Category</h2>
+    <div class="row row-cols-1 row-cols-sm-3 g-4">
+      <div class="col" *ngFor="let cat of categories">
+        <a href="#" class="nav-link text-center">
+          <img [src]="cat.image" class="rounded-circle" alt="Category Thumbnail" />
+          <h4 class="fs-6 mt-3 fw-normal">{{ cat.title }}</h4>
+        </a>
+      </div>
+    </div>
+  </div>
+</section>
