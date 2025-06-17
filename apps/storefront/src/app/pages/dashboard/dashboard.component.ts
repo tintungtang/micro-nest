@@ -5,9 +5,6 @@ import { CommonModule } from '@angular/common';
   standalone: true,
   selector: 'storefront-dashboard',
   imports: [CommonModule],
-  template: `
-    <h1 class="title">Dashboard</h1>
-    <p>Welcome to the dashboard page. This is a placeholder for TailAdmin dashboard.</p>
-  `,
+  templateUrl: './dashboard.component.html',
 })
 export class DashboardComponent {}
