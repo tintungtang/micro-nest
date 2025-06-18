@@ -5,7 +5,7 @@ import { NxWelcomeComponent } from './nx-welcome.component';
 @Component({
   standalone: true,
   imports: [CommonModule, NxWelcomeComponent],
-  selector: 'ng-mf-auth-ui-entry',
-  template: `<ng-mf-nx-welcome></ng-mf-nx-welcome>`,
+  selector: 'mfe-auth-ui-entry',
+  template: `<mfe-auth-nx-welcome></mfe-auth-nx-welcome>`,
 })
 export class RemoteEntryComponent {}

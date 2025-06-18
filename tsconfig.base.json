@@ -22,6 +22,9 @@
             "product-ui/Routes": [
                 "apps/product-ui/src/app/remote-entry/entry.routes.ts"
             ],
+            "product-ui/BestSellingFragment": [
+                "apps/product-ui/src/app/components/best-selling.component.ts"
+            ],
             "shared/ButtonComponent": [
                 "apps/shared/src/app/components/button.component.ts"
             ],

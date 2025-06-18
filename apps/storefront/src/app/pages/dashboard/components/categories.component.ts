@@ -2,7 +2,7 @@ import { Component } from '@angular/core';
 import { CommonModule } from '@angular/common';
 
 @Component({
-  selector: 'storefront-category-section',
+  selector: 'mfe-storefront-category-section',
   standalone: true,
     imports: [CommonModule],
   templateUrl: './categories.component.html',

@@ -2,7 +2,7 @@
   "name": "auth-ui",
   "$schema": "../../node_modules/nx/schemas/project-schema.json",
   "projectType": "application",
-  "prefix": "ng-mf",
+  "prefix": "mfe-auth",
   "sourceRoot": "apps/auth-ui/src",
   "tags": [],
   "targets": {

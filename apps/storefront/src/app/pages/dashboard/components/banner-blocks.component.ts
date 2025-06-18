@@ -2,7 +2,7 @@ import { Component } from '@angular/core';
 import { CommonModule } from '@angular/common';
 
 @Component({
-  selector: 'storefront-banner-blocks',
+  selector: 'mfe-storefront-banner-blocks',
   standalone: true,
   imports: [CommonModule],
   templateUrl: './banner-blocks.component.html',

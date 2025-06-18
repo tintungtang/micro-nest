@@ -2,7 +2,7 @@
   "name": "storefront",
   "$schema": "../../node_modules/nx/schemas/project-schema.json",
   "projectType": "application",
-  "prefix": "app",
+  "prefix": "mfe-storefront",
   "sourceRoot": "apps/storefront/src",
   "tags": [],
   "targets": {

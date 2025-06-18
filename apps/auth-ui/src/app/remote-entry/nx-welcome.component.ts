@@ -2,7 +2,7 @@ import { Component } from '@angular/core';
 import { CommonModule } from '@angular/common';
 
 @Component({
-  selector: 'ng-mf-nx-welcome',
+  selector: 'mfe-auth-nx-welcome',
   standalone: true,
   imports: [CommonModule],
   template: `

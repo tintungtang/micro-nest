@@ -2,7 +2,7 @@
     "name": "product-ui",
     "$schema": "../../node_modules/nx/schemas/project-schema.json",
     "projectType": "application",
-    "prefix": "app",
+    "prefix": "mfe-product",
     "sourceRoot": "apps/product-ui/src",
     "tags": [],
     "targets": {

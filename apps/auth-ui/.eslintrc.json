@@ -21,7 +21,7 @@
           "error",
           {
             "type": "element",
-            "prefix": "ng-mf",
+            "prefix": "mfe-auth",
             "style": "kebab-case"
           }
         ]

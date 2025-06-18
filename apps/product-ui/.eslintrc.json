@@ -21,7 +21,7 @@
                     "error",
                     {
                         "type": "element",
-                        "prefix": "app",
+                        "prefix": "mfe-product",
                         "style": "kebab-case"
                     }
                 ]

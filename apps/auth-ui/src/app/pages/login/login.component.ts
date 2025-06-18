@@ -7,7 +7,7 @@ import { SharedInputComponent } from 'shared/InputComponent';
 
 @Component({
   standalone: true,
-  selector: 'auth-login-page',
+  selector: 'mfe-auth-login-page',
   imports: [CommonModule, FormsModule, SharedButtonComponent, SharedInputComponent],
   template: `
     <h2>Login</h2>

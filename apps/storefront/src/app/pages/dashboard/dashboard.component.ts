@@ -1,9 +1,8 @@
 import { Component } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { HeaderComponent } from './components/header.component';
 import { HeroComponent } from './components/hero.component';
 import { CategoriesComponent } from './components/categories.component';
-import { BestSellingComponent } from './components/best-selling.component';
+import { BestSellingComponent } from 'product-ui/BestSellingFragment';
 import { BannerBlocksComponent } from './components/banner-blocks.component';
 import { FeaturedProductsComponent } from './components/featured-products.component';
 import { NewsletterComponent } from './components/newsletter.component';
@@ -16,10 +15,9 @@ import { FeaturesComponent } from './components/features.component';
 
 @Component({
   standalone: true,
-  selector: 'storefront-dashboard',
+  selector: 'mfe-storefront-dashboard',
   imports: [
     CommonModule,
-    HeaderComponent,
     HeroComponent,
     CategoriesComponent,
     BestSellingComponent,
