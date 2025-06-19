@@ -7,10 +7,10 @@ export default defineConfig({
     ...nxE2EPreset(__filename, {
       cypressDir: 'src',
       webServerCommands: {
-        default: 'nx run auth-ui:serve:development',
-        production: 'nx run auth-ui:serve:production',
+        default: 'nx run auth-app:serve:development',
+        production: 'nx run auth-app:serve:production',
       },
-      ciWebServerCommand: 'nx run auth-ui:serve-static',
+      ciWebServerCommand: 'nx run auth-app:serve-static',
     }),
     baseUrl: 'http://localhost:4202',
   },

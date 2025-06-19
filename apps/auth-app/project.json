@@ -1,31 +1,31 @@
 {
-  "name": "auth-ui",
+  "name": "auth-app",
   "$schema": "../../node_modules/nx/schemas/project-schema.json",
   "projectType": "application",
   "prefix": "mfe-auth",
-  "sourceRoot": "apps/auth-ui/src",
+  "sourceRoot": "apps/auth-app/src",
   "tags": [],
   "targets": {
     "build": {
       "executor": "@nx/angular:webpack-browser",
       "outputs": ["{options.outputPath}"],
       "options": {
-        "outputPath": "dist/apps/auth-ui",
-        "index": "apps/auth-ui/src/index.html",
-        "main": "apps/auth-ui/src/main.ts",
+        "outputPath": "dist/apps/auth-app",
+        "index": "apps/auth-app/src/index.html",
+        "main": "apps/auth-app/src/main.ts",
         "polyfills": ["zone.js"],
-        "tsConfig": "apps/auth-ui/tsconfig.app.json",
+        "tsConfig": "apps/auth-app/tsconfig.app.json",
         "inlineStyleLanguage": "scss",
         "assets": [
           {
             "glob": "**/*",
-            "input": "apps/auth-ui/public"
+            "input": "apps/auth-app/public"
           }
         ],
-        "styles": ["apps/auth-ui/src/styles.scss"],
+        "styles": ["apps/auth-app/src/styles.scss"],
         "scripts": [],
         "customWebpackConfig": {
-          "path": "apps/auth-ui/webpack.config.ts"
+          "path": "apps/auth-app/webpack.config.ts"
         }
       },
       "configurations": {
@@ -44,7 +44,7 @@
           ],
           "outputHashing": "all",
           "customWebpackConfig": {
-            "path": "apps/auth-ui/webpack.prod.config.ts"
+            "path": "apps/auth-app/webpack.prod.config.ts"
           }
         },
         "development": {
@@ -66,10 +66,10 @@
       },
       "configurations": {
         "production": {
-          "buildTarget": "auth-ui:build:production"
+          "buildTarget": "auth-app:build:production"
         },
         "development": {
-          "buildTarget": "auth-ui:build:development"
+          "buildTarget": "auth-app:build:development"
         }
       },
       "defaultConfiguration": "development"
@@ -77,7 +77,7 @@
     "extract-i18n": {
       "executor": "@angular-devkit/build-angular:extract-i18n",
       "options": {
-        "buildTarget": "auth-ui:build"
+        "buildTarget": "auth-app:build"
       }
     },
     "lint": {
@@ -87,23 +87,23 @@
       "executor": "@nx/jest:jest",
       "outputs": ["{workspaceRoot}/coverage/{projectRoot}"],
       "options": {
-        "jestConfig": "apps/auth-ui/jest.config.ts"
+        "jestConfig": "apps/auth-app/jest.config.ts"
       }
     },
     "serve-static": {
       "executor": "@nx/web:file-server",
       "defaultConfiguration": "production",
       "options": {
-        "buildTarget": "auth-ui:build",
+        "buildTarget": "auth-app:build",
         "port": 4202,
         "watch": false
       },
       "configurations": {
         "development": {
-          "buildTarget": "auth-ui:build:development"
+          "buildTarget": "auth-app:build:development"
         },
         "production": {
-          "buildTarget": "auth-ui:build:production"
+          "buildTarget": "auth-app:build:production"
         }
       }
     }

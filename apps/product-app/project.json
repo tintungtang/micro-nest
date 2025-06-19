@@ -1,33 +1,33 @@
 {
-    "name": "product-ui",
+    "name": "product-app",
     "$schema": "../../node_modules/nx/schemas/project-schema.json",
     "projectType": "application",
     "prefix": "mfe-product",
-    "sourceRoot": "apps/product-ui/src",
+    "sourceRoot": "apps/product-app/src",
     "tags": [],
     "targets": {
         "build": {
             "executor": "@nx/angular:webpack-browser",
             "outputs": ["{options.outputPath}"],
             "options": {
-                "outputPath": "dist/apps/product-ui",
-                "index": "apps/product-ui/src/index.html",
-                "main": "apps/product-ui/src/main.ts",
+                "outputPath": "dist/apps/product",
+                "index": "apps/product-app/src/index.html",
+                "main": "apps/product-app/src/main.ts",
                 "polyfills": ["zone.js"],
-                "tsConfig": "apps/product-ui/tsconfig.app.json",
+                "tsConfig": "apps/product-app/tsconfig.app.json",
                 "assets": [
                     {
                         "glob": "**/*",
-                        "input": "apps/product-ui/public"
+                        "input": "apps/product-app/public"
                     }
                 ],
                 "styles": [
                     "libs/shared/styles/src/shared.scss",
-                    "apps/product-ui/src/styles.css"
+                    "apps/product-app/src/styles.css"
                 ],
                 "scripts": [],
                 "customWebpackConfig": {
-                    "path": "apps/product-ui/webpack.config.ts"
+                    "path": "apps/product-app/webpack.config.ts"
                 }
             },
             "configurations": {
@@ -46,7 +46,7 @@
                     ],
                     "outputHashing": "all",
                     "customWebpackConfig": {
-                        "path": "apps/product-ui/webpack.prod.config.ts"
+                        "path": "apps/product-app/webpack.prod.config.ts"
                     }
                 },
                 "development": {
@@ -68,10 +68,10 @@
             },
             "configurations": {
                 "production": {
-                    "buildTarget": "product-ui:build:production"
+                    "buildTarget": "product-app:build:production"
                 },
                 "development": {
-                    "buildTarget": "product-ui:build:development"
+                    "buildTarget": "product-app:build:development"
                 }
             },
             "defaultConfiguration": "development"
@@ -79,7 +79,7 @@
         "extract-i18n": {
             "executor": "@angular-devkit/build-angular:extract-i18n",
             "options": {
-                "buildTarget": "product-ui:build"
+                "buildTarget": "product:build"
             }
         },
         "lint": {
@@ -89,23 +89,23 @@
             "executor": "@nx/jest:jest",
             "outputs": ["{workspaceRoot}/coverage/{projectRoot}"],
             "options": {
-                "jestConfig": "apps/product-ui/jest.config.ts"
+                "jestConfig": "apps/product-app/jest.config.ts"
             }
         },
         "serve-static": {
             "executor": "@nx/web:file-server",
             "defaultConfiguration": "production",
             "options": {
-                "buildTarget": "product-ui:build",
+                "buildTarget": "product:build",
                 "port": 4203,
                 "watch": false
             },
             "configurations": {
                 "development": {
-                    "buildTarget": "product-ui:build:development"
+                    "buildTarget": "product:build:development"
                 },
                 "production": {
-                    "buildTarget": "product-ui:build:production"
+                    "buildTarget": "product:build:production"
                 }
             }
         }

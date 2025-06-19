@@ -1,6 +1,6 @@
 import { getGreeting } from '../support/app.po';
 
-describe('auth-ui-e2e', () => {
+describe('auth-app-e2e', () => {
   beforeEach(() => cy.visit('/'));
 
   it('should display welcome message', () => {

@@ -9,7 +9,7 @@ export const appRoutes: Route[] = [
     {
         path: 'auth',
         loadChildren: () =>
-            import('auth-ui/Routes').then((m) => m.remoteRoutes),
+            import('auth-app/Routes').then((m) => m.remoteRoutes),
     },
     {
         path: '',

@@ -7,7 +7,7 @@ export const officerGuard: CanActivateFn = () => {
   // if (role === 'officer') {
   //   return true;
   // }
-  // return router.parseUrl('/auth-ui/login');
+  // return router.parseUrl('/auth/login');
 
     return true;
 };

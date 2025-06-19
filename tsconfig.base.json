@@ -15,12 +15,12 @@
         "skipDefaultLibCheck": true,
         "baseUrl": ".",
         "paths": {
-            "auth-ui/Routes": [
-                "apps/auth-ui/src/app/remote-entry/entry.routes.ts"
+            "auth-app/Routes": [
+                "apps/auth-app/src/app/remote-entry/entry.routes.ts"
             ],
             "cart/Module": ["apps/cart/src/remote-entry.ts"],
-            "product-ui/BestSellingFragment": [
-                "apps/product-ui/src/app/components/best-selling.component.ts"
+            "product-app/BestSellingFragment": [
+                "apps/product-app/src/app/components/best-selling.component.ts"
             ],
             "shared-ui": ["libs/shared/ui/src/index.ts"],
             "shared/SharedButtonComponent": [

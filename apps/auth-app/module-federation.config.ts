@@ -1,9 +1,9 @@
 import { ModuleFederationConfig } from '@nx/webpack';
 
 const config: ModuleFederationConfig = {
-  name: 'auth-ui',
+  name: 'auth-app',
   exposes: {
-    './Routes': 'apps/auth-ui/src/app/remote-entry/entry.routes.ts',
+    './Routes': 'apps/auth-app/src/app/remote-entry/entry.routes.ts',
   },
 };
 
