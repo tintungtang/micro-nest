@@ -15,6 +15,11 @@
         "skipDefaultLibCheck": true,
         "baseUrl": ".",
         "paths": {
+            "@training-apis/shared/services": [
+                "libs/shared/services/src/index.ts"
+            ],
+            "@training-apis/shared/styles": ["libs/shared/styles/src/index.ts"],
+            "@training-apis/shared/ui": ["libs/shared/ui/src/index.ts"],
             "auth-ui/Routes": [
                 "apps/auth-ui/src/app/remote-entry/entry.routes.ts"
             ],

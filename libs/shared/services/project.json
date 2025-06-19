@@ -1,0 +1,19 @@
+{
+    "name": "shared-services",
+    "$schema": "../../../node_modules/nx/schemas/project-schema.json",
+    "sourceRoot": "libs/shared/services/src",
+    "projectType": "library",
+    "tags": [],
+    "targets": {
+        "build": {
+            "executor": "@nx/js:tsc",
+            "outputs": ["{options.outputPath}"],
+            "options": {
+                "outputPath": "dist/libs/shared/services",
+                "main": "libs/shared/services/src/index.ts",
+                "tsConfig": "libs/shared/services/tsconfig.lib.json",
+                "assets": ["libs/shared/services/*.md"]
+            }
+        }
+    }
+}
