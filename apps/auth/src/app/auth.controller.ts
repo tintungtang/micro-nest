@@ -4,9 +4,9 @@ import { Request } from 'express';
 
 @Controller()
 export class AuthController {
-  @Get('profile')
+  @Get('me')
   @UseGuards(FirebaseAuthGuard)
-  getProfile(@Req() req: Request) {
+  getMe(@Req() req: Request) {
     return (req as any).user;
   }
 }
