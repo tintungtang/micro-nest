@@ -1,6 +1,7 @@
 import { DashboardComponent } from './dashboard/dashboard.component';
 import { Route } from '@angular/router';
 import { PagesComponent } from './pages.component';
+import { SampleComponent } from './sample/sample.component';
 
 export const pagesRoutes: Route[] = [
     {
@@ -8,7 +9,9 @@ export const pagesRoutes: Route[] = [
         children: [
             { path: 'dashboard', component: DashboardComponent },
             { path: 'dashboard/:id', component: DashboardComponent },
+            { path: 'sample', component: SampleComponent },
             { path: '', redirectTo: 'dashboard', pathMatch: 'full' },
         ]
     }
 ];
+

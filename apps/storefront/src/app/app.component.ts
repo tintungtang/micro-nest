@@ -1,12 +1,11 @@
 import { Component } from '@angular/core';
 import { RouterModule } from '@angular/router';
 import { NxWelcomeComponent } from './nx-welcome.component';
-import { SharedButtonComponent } from 'shared/ButtonComponent';
 
 @Component({
   standalone: true,
-    imports: [ NxWelcomeComponent, RouterModule, SharedButtonComponent ],
-  selector: 'app-root',
+    imports: [ NxWelcomeComponent, RouterModule],
+  selector: 'mfe-storefront-root',
   templateUrl: './app.component.html',
   styleUrl: './app.component.scss',
 })

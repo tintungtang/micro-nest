@@ -24,17 +24,14 @@
                 "apps/auth-ui/src/app/remote-entry/entry.routes.ts"
             ],
             "cart/Module": ["apps/cart/src/remote-entry.ts"],
-            "product-ui/Routes": [
-                "apps/product-ui/src/app/remote-entry/entry.routes.ts"
-            ],
             "product-ui/BestSellingFragment": [
                 "apps/product-ui/src/app/components/best-selling.component.ts"
             ],
-            "shared/ButtonComponent": [
-                "apps/shared/src/app/components/button.component.ts"
+            "product-ui/Routes": [
+                "apps/product-ui/src/app/remote-entry/entry.routes.ts"
             ],
-            "shared/InputComponent": [
-                "apps/shared/src/app/components/input.component.ts"
+            "shared": [
+                "apps/shared/*"
             ]
         }
     },
