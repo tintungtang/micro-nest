@@ -1,7 +1,7 @@
 {
-  "name": "file-storage",
+  "name": "api-gateway",
   "$schema": "../../node_modules/nx/schemas/project-schema.json",
-  "sourceRoot": "apps/file-storage/src",
+  "sourceRoot": "apis/api-gateway/src",
   "projectType": "application",
   "tags": [],
   "targets": {
@@ -10,21 +10,17 @@
       "defaultConfiguration": "development",
       "dependsOn": ["build"],
       "options": {
-        "buildTarget": "file-storage:build",
+        "buildTarget": "api-gateway:build",
         "runBuildTargetDependencies": false
       },
       "configurations": {
         "development": {
-          "buildTarget": "file-storage:build:development"
+          "buildTarget": "api-gateway:build:development"
         },
         "production": {
-          "buildTarget": "file-storage:build:production"
+          "buildTarget": "api-gateway:build:production"
         }
       }
-    },
-    "docker-build": {
-      "dependsOn": ["build"],
-      "command": "docker build -f apps/file-storage/Dockerfile . -t file-storage"
     }
   }
 }

@@ -14,7 +14,7 @@ WORKDIR /app
 RUN addgroup --system api-gateway && \
     adduser --system -G api-gateway api-gateway
 
-COPY dist/apps/api-gateway ./
+COPY dist/apis/api-gateway ./
 RUN chown -R api-gateway:api-gateway .
 
 USER api-gateway

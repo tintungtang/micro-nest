@@ -3,7 +3,7 @@ const { join } = require('path');
 
 module.exports = {
     output: {
-        path: join(__dirname, '../../dist/apps/product'),
+        path: join(__dirname, '../../dist/apis/product'),
         filename: 'main.js',
         clean: true
     },

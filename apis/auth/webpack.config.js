@@ -4,7 +4,7 @@ const path = require('node:path');
 
 module.exports = {
   output: {
-    path: join(__dirname, '../../dist/apps/auth'),
+    path: join(__dirname, '../../dist/apis/auth'),
     filename: 'main.js',
     clean: true
   },

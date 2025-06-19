@@ -1,7 +1,7 @@
 {
     "name": "product",
     "$schema": "../../node_modules/nx/schemas/project-schema.json",
-    "sourceRoot": "apps/product/src",
+    "sourceRoot": "apis/product/src",
     "projectType": "application",
     "tags": [],
     "targets": {
@@ -28,7 +28,7 @@
             "dependsOn": [
                 "build"
             ],
-            "command": "docker build -f apps/product/Dockerfile . -t product"
+            "command": "docker build -f apis/product/Dockerfile . -t product"
         }
     }
 }
