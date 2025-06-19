@@ -1,6 +1,5 @@
 import { useEffect, useState } from 'react';
-
-export const CART_COUNT_EVENT = 'cart-count-change';
+import { CART_COUNT_EVENT } from 'hub';
 
 const CartComponent = () => {
   const [count, setCount] = useState(0);

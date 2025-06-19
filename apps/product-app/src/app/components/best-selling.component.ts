@@ -2,6 +2,7 @@ import { Component } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { MfeButtonComponent } from 'shared-ui';
 import { ProductCardComponent } from './product-card.component';
+import { addCartItem } from 'hub';
 
 @Component({
   selector: 'mfe-product-best-selling-section',
@@ -74,6 +75,6 @@ export class BestSellingComponent {
   ];
 
   onAddToCart(product: any) {
-    console.log('Add to cart', product);
+    addCartItem(product);
   }
 }
