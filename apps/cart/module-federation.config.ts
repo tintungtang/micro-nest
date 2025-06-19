@@ -5,6 +5,7 @@ const config: ModuleFederationConfig = {
 
     exposes: {
         './Module': './src/remote-entry.ts',
+        './CartComponent': './src/app/components/cart.compoent.tsx',
     },
 };
 
