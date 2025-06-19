@@ -2,7 +2,7 @@ import { Component } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { HeroComponent } from './components/hero.component';
 import { CategoriesComponent } from './components/categories.component';
-import { BestSellingComponent } from 'product-app/BestSellingFragment';
+import { BestSellingWrapperComponent } from './components/best-selling-wrapper.component';
 import { BannerBlocksComponent } from './components/banner-blocks.component';
 import { FeaturedProductsComponent } from './components/featured-products.component';
 import { NewsletterComponent } from './components/newsletter.component';
@@ -23,7 +23,7 @@ import { SharedButtonComponent } from 'shared/SharedButtonComponent';
         CommonModule,
         HeroComponent,
         CategoriesComponent,
-        BestSellingComponent,
+        BestSellingWrapperComponent,
         BannerBlocksComponent,
         FeaturedProductsComponent,
         NewsletterComponent,
@@ -33,9 +33,8 @@ import { SharedButtonComponent } from 'shared/SharedButtonComponent';
         DownloadAppComponent,
         SearchTagsComponent,
         FeaturesComponent,
-        MfeButtonComponent
+        MfeButtonComponent,
     ],
-    templateUrl: './dashboard.component.html'
+    templateUrl: './dashboard.component.html',
 })
-export class DashboardComponent {
-}
+export class DashboardComponent {}
