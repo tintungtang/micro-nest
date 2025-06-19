@@ -1,7 +1,7 @@
 {
   "name": "auth",
   "$schema": "../../node_modules/nx/schemas/project-schema.json",
-  "sourceRoot": "apps/auth/src",
+  "sourceRoot": "apis/auth/src",
   "projectType": "application",
   "tags": [],
   "targets": {
@@ -24,7 +24,7 @@
     },
     "docker-build": {
       "dependsOn": ["build"],
-      "command": "docker build -f apps/auth/Dockerfile . -t auth"
+      "command": "docker build -f apis/auth/Dockerfile . -t auth"
     }
   }
 }

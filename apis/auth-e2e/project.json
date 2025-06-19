@@ -1,14 +1,18 @@
 {
-  "name": "file-storage-e2e",
+  "name": "auth-e2e",
   "$schema": "../../node_modules/nx/schemas/project-schema.json",
   "projectType": "application",
-  "implicitDependencies": ["file-storage"],
+  "implicitDependencies": [
+    "auth"
+  ],
   "targets": {
     "e2e": {
       "executor": "@nx/jest:jest",
-      "outputs": ["{workspaceRoot}/coverage/{e2eProjectRoot}"],
+      "outputs": [
+        "{workspaceRoot}/coverage/{e2eProjectRoot}"
+      ],
       "options": {
-        "jestConfig": "apps/file-storage-e2e/jest.config.ts",
+        "jestConfig": "apis/auth-e2e/jest.config.ts",
         "passWithNoTests": true
       },
       "dependsOn": []
