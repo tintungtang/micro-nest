@@ -2,7 +2,7 @@ import { useEffect, useState } from 'react';
 
 export const CART_COUNT_EVENT = 'cart-count-change';
 
-const CartCompoent = () => {
+const CartComponent = () => {
   const [count, setCount] = useState(0);
 
   useEffect(() => {
@@ -20,4 +20,4 @@ const CartCompoent = () => {
   return <span>{count}</span>;
 };
 
-export default CartCompoent;
+export default CartComponent;
