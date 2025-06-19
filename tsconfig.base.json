@@ -26,7 +26,8 @@
             "shared/SharedButtonComponent": [
                 "apps/shared/src/app/components/button.component.ts"
             ],
-            "styles": ["libs/shared/styles/src/index.ts"]
+            "styles": ["libs/shared/styles/src/index.ts"],
+            "hub": ["libs/shared/hub/src/index.ts"]
         }
     },
     "exclude": ["node_modules", "tmp"]
