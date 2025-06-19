@@ -74,6 +74,8 @@ export class BestSellingComponent {
   ];
 
   onAddToCart(product: any) {
-    console.log('Add to cart', product);
+    window.dispatchEvent(
+      new CustomEvent('cart:add', { detail: product })
+    );
   }
 }
