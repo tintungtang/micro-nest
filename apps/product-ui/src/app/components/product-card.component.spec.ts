@@ -12,6 +12,12 @@ describe('ProductCardComponent', () => {
 
         fixture = TestBed.createComponent(ProductCardComponent);
         component = fixture.componentInstance;
+        component.product = {
+            name: 'Test',
+            description: 'Test',
+            imageUrl: '',
+            price: 0,
+        };
         fixture.detectChanges();
     });
 

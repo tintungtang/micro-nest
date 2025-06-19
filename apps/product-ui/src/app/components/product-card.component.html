@@ -1,7 +1,26 @@
-<div class="">
-  <div class="px-6 py-4">
-    <div class="font-bold text-xl mb-2">Product</div>
-    <p class="text-gray-700 text-base">This is a product card styled with TailAdmin.</p>
-      <mfe-ui-button></mfe-ui-button>
+<div class="product-item">
+  <figure>
+    <a href="#" [title]="product.name">
+      <img [src]="product.imageUrl" [alt]="product.name" class="tab-image" />
+    </a>
+  </figure>
+  <div class="d-flex flex-column text-center">
+    <h3 class="fs-6 fw-normal">{{ product.name }}</h3>
+    <p class="mb-2 text-body-secondary">{{ product.description }}</p>
+    <div class="d-flex justify-content-center align-items-center gap-2">
+      <span class="text-dark fw-semibold">${{ product.price }}</span>
+    </div>
+    <div class="button-area p-3 pt-0" *ngIf="showAddToCart">
+      <div class="row g-1 mt-2">
+        <div class="col">
+          <button class="btn btn-primary rounded-1 p-2 fs-7 btn-cart" (click)="onAddToCart()">
+            <svg width="18" height="18">
+              <use xlink:href="#cart"></use>
+            </svg>
+            Add to Cart
+          </button>
+        </div>
+      </div>
+    </div>
   </div>
 </div>
