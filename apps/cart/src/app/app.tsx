@@ -1,15 +1,16 @@
 import ReactDOM from 'react-dom';
+import { BrowserRouter, Routes, Route } from 'react-router-dom';
+import CartCompoent from './components/cart.compoent';
+import CheckoutComponent from './components/checkout.component';
 
 export function App() {
     return (
-        <div className="p-4">
-            <div className="max-w-sm rounded overflow-hidden shadow-lg bg-white">
-                <div className="px-6 py-4">
-                    <h1 className="font-bold text-xl mb-2">Cart</h1>
-                    <p className="text-gray-700 text-base">This is the React Cart page styled with TailAdmin.</p>
-                </div>
-            </div>
-        </div>
+        <BrowserRouter>
+            <Routes>
+                <Route path="/" element={<CartCompoent />} />
+                <Route path="/checkout" element={<CheckoutComponent />} />
+            </Routes>
+        </BrowserRouter>
     );
 }
 export function defineReactWebComponent() {
