@@ -13,13 +13,6 @@ export const appRoutes: Route[] = [
             import('auth-app/Routes').then((m) => m.remoteRoutes),
     },
     {
-        path: 'products',
-        loadChildren: () =>
-            loadRemoteWithFallback('product-app', './ProductModule', () =>
-                import('./fallback/fallback-product.module').then((m) => m.FallbackProductModule)
-            ),
-    },
-    {
         path: '',
         redirectTo: 'pages',
         pathMatch: 'full',

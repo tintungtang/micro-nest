@@ -11,5 +11,5 @@ import { Component, Input } from '@angular/core';
         '</section>'
 })
 export class MfeStorefrontSectionComponent {
-    @Input() public title = 'Section';
+    @Input() public title: string = '';
 }

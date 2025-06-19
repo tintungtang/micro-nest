@@ -1,9 +1,10 @@
 import { Component, OnInit, Type } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { loadRemoteWithFallback } from 'hub';
+import { FallbackAppComponent } from '../../../fallback/fallback-app.module';
 
 @Component({
-    selector: 'mfe-product-best-selling-section',
+    selector: 'mfe-storefront-best-selling-section-wrapper',
     standalone: true,
     imports: [CommonModule],
     template: `<ng-container
@@ -19,8 +20,8 @@ export class BestSellingWrapperComponent implements OnInit {
             'product-app',
             './BestSellingFragment',
             () =>
-                import('../../fallback/best-selling-fallback.component').then(
-                    (m) => m.BestSellingFallbackComponent,
+                import('../../../fallback/fallback-app.module').then(
+                    (m) => m.FallbackAppComponent,
                 ),
         );
 
