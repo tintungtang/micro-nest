@@ -1,21 +1,4 @@
-// eslint-disable-next-line @typescript-eslint/no-unused-vars
-// import styles from './app.module.scss';
-//
-// import NxWelcome from './nx-welcome';
-//
-// export function App() {
-//     return (
-//         <div>
-//             <NxWelcome title="cart" />
-//         </div>
-//     );
-// }
-//
-// export default App;
-
-// import styles from './app.module.scss';
 import ReactDOM from 'react-dom';
-
 
 export function App() {
     return (

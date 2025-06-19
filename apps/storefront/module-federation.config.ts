@@ -1,4 +1,5 @@
 import { ModuleFederationConfig } from '@nx/webpack';
+import { share } from 'rxjs';
 
 const config: ModuleFederationConfig = {
     name: 'storefront',
@@ -18,7 +19,7 @@ const config: ModuleFederationConfig = {
         'auth-ui',
         'product-ui',
         ['cart', 'http://localhost:4204/remoteEntry.js'],
-        'shared',
+        'shared'
     ],
 };
 

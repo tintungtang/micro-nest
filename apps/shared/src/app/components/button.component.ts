@@ -1,11 +1,11 @@
 import { Component, Input } from '@angular/core';
+import { MfeButtonComponent } from 'shared-ui';
 
 @Component({
   standalone: true,
   selector: 'shared-button',
-  template: `<button type="button" [disabled]="disabled" class="px-4 py-2 bg-blue-600 text-white rounded disabled:opacity-50">
-    A share component <ng-content></ng-content>
-  </button>`,
+  template: `<mfe-ui-button></mfe-ui-button>`,
+    imports: [MfeButtonComponent]
 })
 export class SharedButtonComponent {
   @Input() disabled = false;

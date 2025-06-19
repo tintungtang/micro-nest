@@ -12,25 +12,30 @@ import { LatestBlogComponent } from './components/latest-blog.component';
 import { DownloadAppComponent } from './components/download-app.component';
 import { SearchTagsComponent } from './components/search-tags.component';
 import { FeaturesComponent } from './components/features.component';
+import { MfeButtonComponent } from 'shared-ui';
+import { SharedButtonComponent } from 'shared/SharedButtonComponent';
 
 @Component({
-  standalone: true,
-  selector: 'mfe-storefront-dashboard',
-  imports: [
-    CommonModule,
-    HeroComponent,
-    CategoriesComponent,
-    BestSellingComponent,
-    BannerBlocksComponent,
-    FeaturedProductsComponent,
-    NewsletterComponent,
-    PopularProductsComponent,
-    LatestProductsComponent,
-    LatestBlogComponent,
-    DownloadAppComponent,
-    SearchTagsComponent,
-    FeaturesComponent,
-  ],
-  templateUrl: './dashboard.component.html',
+    standalone: true,
+    selector: 'mfe-storefront-dashboard',
+    imports: [
+        SharedButtonComponent,
+        CommonModule,
+        HeroComponent,
+        CategoriesComponent,
+        BestSellingComponent,
+        BannerBlocksComponent,
+        FeaturedProductsComponent,
+        NewsletterComponent,
+        PopularProductsComponent,
+        LatestProductsComponent,
+        LatestBlogComponent,
+        DownloadAppComponent,
+        SearchTagsComponent,
+        FeaturesComponent,
+        MfeButtonComponent
+    ],
+    templateUrl: './dashboard.component.html'
 })
-export class DashboardComponent {}
+export class DashboardComponent {
+}

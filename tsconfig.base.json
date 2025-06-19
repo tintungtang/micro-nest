@@ -15,11 +15,6 @@
         "skipDefaultLibCheck": true,
         "baseUrl": ".",
         "paths": {
-            "@training-apis/shared/services": [
-                "libs/shared/services/src/index.ts"
-            ],
-            "@training-apis/shared/styles": ["libs/shared/styles/src/index.ts"],
-            "@training-apis/shared/ui": ["libs/shared/ui/src/index.ts"],
             "auth-ui/Routes": [
                 "apps/auth-ui/src/app/remote-entry/entry.routes.ts"
             ],
@@ -27,12 +22,11 @@
             "product-ui/BestSellingFragment": [
                 "apps/product-ui/src/app/components/best-selling.component.ts"
             ],
-            "product-ui/Routes": [
-                "apps/product-ui/src/app/remote-entry/entry.routes.ts"
+            "shared-ui": ["libs/shared/ui/src/index.ts"],
+            "shared/SharedButtonComponent": [
+                "apps/shared/src/app/components/button.component.ts"
             ],
-            "shared": [
-                "apps/shared/*"
-            ]
+            "styles": ["libs/shared/styles/src/index.ts"]
         }
     },
     "exclude": ["node_modules", "tmp"]

@@ -1,5 +1,5 @@
 {
-    "name": "@training-apis/source",
+    "name": "micronest",
     "version": "0.0.0",
     "license": "MIT",
     "scripts": {

@@ -21,7 +21,10 @@
                         "input": "apps/product-ui/public"
                     }
                 ],
-                "styles": ["apps/product-ui/src/styles.css"],
+                "styles": [
+                    "libs/shared/styles/src/shared.scss",
+                    "apps/product-ui/src/styles.css"
+                ],
                 "scripts": [],
                 "customWebpackConfig": {
                     "path": "apps/product-ui/webpack.config.ts"

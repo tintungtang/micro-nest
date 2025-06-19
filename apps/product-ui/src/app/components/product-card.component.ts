@@ -1,10 +1,11 @@
 import { Component } from '@angular/core';
 import { CommonModule } from '@angular/common';
+import { MfeButtonComponent } from 'shared-ui';
 
 @Component({
-    selector: 'app-product-card',
+    selector: 'mfe-product-card',
     standalone: true,
-    imports: [CommonModule],
+    imports: [CommonModule, MfeButtonComponent],
     templateUrl: './product-card.component.html',
 })
 export class ProductCardComponent {}

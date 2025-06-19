@@ -5,7 +5,7 @@ import { NxWelcomeComponent } from './nx-welcome.component';
 @Component({
     standalone: true,
     imports: [CommonModule, NxWelcomeComponent],
-    selector: 'app-product-ui-entry',
-    template: `<app-nx-welcome></app-nx-welcome>`,
+    selector: 'mfe-product-ui-entry',
+    template: `<mfe-product-nx-welcome></mfe-product-nx-welcome>`,
 })
 export class RemoteEntryComponent {}

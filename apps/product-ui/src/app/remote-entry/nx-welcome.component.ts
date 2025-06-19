@@ -3,12 +3,12 @@ import { CommonModule } from '@angular/common';
 import { ProductCardComponent } from '../components/product-card.component';
 
 @Component({
-  selector: 'app-nx-welcome',
+  selector: 'mfe-product-nx-welcome',
   standalone: true,
   imports: [CommonModule, ProductCardComponent],
   template: `
     <div class="p-4">
-      <app-product-card></app-product-card>
+      <mfe-product-card></mfe-product-card>
     </div>
   `,
 })
