@@ -14,6 +14,7 @@ import { SearchTagsComponent } from './components/search-tags.component';
 import { FeaturesComponent } from './components/features.component';
 import { MfeButtonComponent } from 'shared-ui';
 import { SharedButtonComponent } from 'shared/SharedButtonComponent';
+import { BestSellingComponent } from 'product-app/BestSellingFragment';
 
 @Component({
     standalone: true,
@@ -34,6 +35,7 @@ import { SharedButtonComponent } from 'shared/SharedButtonComponent';
         SearchTagsComponent,
         FeaturesComponent,
         MfeButtonComponent,
+        BestSellingComponent
     ],
     templateUrl: './dashboard.component.html',
 })

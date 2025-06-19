@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react';
-import ReactDOM from 'react-dom';
+import { createRoot, Root } from 'react-dom/client';
 
 const CART_KEY = 'cartItems';
 
@@ -40,19 +40,29 @@ const CartButton = () => {
   );
 };
 
+
 export function defineCartButtonElement() {
-  class CartButtonElement extends HTMLElement {
-    connectedCallback() {
-      ReactDOM.render(<CartButton />, this);
+    class CartButtonElement extends HTMLElement {
+        private _root?: Root;
+
+        connectedCallback() {
+            if (!this._root) {
+                this._root = createRoot(this);
+                this._root.render(<CartButton />);
+            }
+        }
+
+        disconnectedCallback() {
+            this._root?.unmount();
+            this._root = undefined;
+        }
     }
-    disconnectedCallback() {
-      ReactDOM.unmountComponentAtNode(this);
+
+    if (!customElements.get('mfe-cart-button')) {
+        customElements.define('mfe-cart-button', CartButtonElement);
     }
-  }
-  if (!customElements.get('mfe-cart-button')) {
-    customElements.define('mfe-cart-button', CartButtonElement);
-  }
 }
+
 
 defineCartButtonElement();
 export default CartButton;

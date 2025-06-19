@@ -4,7 +4,7 @@ export async function loadRemoteWithFallback<T>(
   fallback: () => Promise<T>
 ): Promise<T> {
   try {
-    const module = await import(/* webpackIgnore: true */ `${remote}/${exposedModule}`);
+    const module = await import(`${remote}/${exposedModule}`);
     return module;
   } catch (err) {
     console.error(`Failed to load remote ${remote}/${exposedModule}`, err);
