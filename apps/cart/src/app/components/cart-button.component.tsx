@@ -1,10 +1,12 @@
 import React, { useEffect, useState } from 'react';
 import { createRoot, Root } from 'react-dom/client';
+import { useNavigate } from 'react-router-dom';
 
 const CART_KEY = 'cartItems';
 
 const CartButton = () => {
   const [count, setCount] = useState(0);
+  const navigate = useNavigate();
 
   useEffect(() => {
     const stored = JSON.parse(localStorage.getItem(CART_KEY) || '[]');
@@ -22,11 +24,9 @@ const CartButton = () => {
   }, []);
 
   return (
-    <a
+    <button
       className="p-2 mx-1 position-relative"
-      data-bs-toggle="offcanvas"
-      data-bs-target="#offcanvasCart"
-      aria-controls="offcanvasCart"
+      onClick={() => navigate('/pages/cart')}
     >
       <svg width="24" height="24">
         <use xlinkHref="#shopping-bag"></use>
@@ -36,7 +36,7 @@ const CartButton = () => {
           {count}
         </span>
       )}
-    </a>
+    </button>
   );
 };
 
