@@ -8,11 +8,6 @@ export const appRoutes: Route[] = [
           import('./pages/pages.routes').then((c) => c.pagesRoutes)
   },
   {
-      path: 'products/:id',
-      loadComponent: () =>
-          import('product-app/ProductDetailsPage').then((m) => m.ProductDetailsPage)
-  },
-  {
       path: 'auth',
       loadChildren: () =>
           import('auth-app/Routes').then((m) => m.remoteRoutes),

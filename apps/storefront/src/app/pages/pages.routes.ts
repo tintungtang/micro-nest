@@ -8,8 +8,12 @@ export const pagesRoutes: Route[] = [
         path: '', component: PagesComponent,
         children: [
             { path: 'dashboard', component: DashboardComponent },
-            { path: 'dashboard/:id', component: DashboardComponent },
             { path: 'sample', component: SampleComponent },
+            {
+                path: 'products',
+                loadChildren: () =>
+                    import('product-app/Routes').then((m) => m.remoteRoutes)
+            },
             { path: '', redirectTo: 'dashboard', pathMatch: 'full' },
         ]
     }

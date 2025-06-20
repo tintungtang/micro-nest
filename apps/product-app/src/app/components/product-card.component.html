@@ -1,7 +1,7 @@
-<div class="product-item" (click)="viewDetails()">
+<div class="product-item" >
   <figure>
-    <a href="#" [title]="product.name">
-      <img [src]="product.imageUrl" [alt]="product.name" class="tab-image" />
+    <a href="javascript:void(0)" [title]="product.name">
+      <img [src]="product.imageUrl" [alt]="product.name" class="tab-image" (click)="viewDetails()"/>
     </a>
   </figure>
   <div class="d-flex flex-column text-center">

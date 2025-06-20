@@ -1,16 +1,16 @@
 import { Component, EventEmitter, Input, Output, ViewEncapsulation } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { Router } from '@angular/router';
+import { ActivatedRoute, Router, RouterLink } from '@angular/router';
 
 @Component({
     selector: 'mfe-product-card',
     standalone: true,
-    imports: [CommonModule],
+    imports: [ CommonModule, RouterLink],
     templateUrl: './product-card.component.html',
     encapsulation: ViewEncapsulation.Emulated,
 })
 export class ProductCardComponent {
-    @Input() product!: { name: string; description: string; imageUrl: string; price: number };
+    @Input() product!: { id: number; name: string; description: string; imageUrl: string; price: number };
     @Input() productId!: string | number;
     @Input() showAddToCart = true;
     @Output() addToCart = new EventEmitter<void>();
@@ -22,8 +22,8 @@ export class ProductCardComponent {
     }
 
     viewDetails() {
-        if (this.productId !== undefined && this.productId !== null) {
-            this.router.navigate(['/products', this.productId]);
+        if (this.product.id) {
+            this.router.navigateByUrl(`/pages/products/${this.product.id}`);
         }
     }
 }

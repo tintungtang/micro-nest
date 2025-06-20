@@ -18,17 +18,22 @@
             "auth-app/Routes": [
                 "apps/auth-app/src/app/remote-entry/entry.routes.ts"
             ],
+            "cart/CartButton": [
+                "apps/cart/src/app/components/cart-button.component.tsx"
+            ],
             "cart/Module": ["apps/cart/src/remote-entry.ts"],
-            "cart/CartButton": ["apps/cart/src/app/components/cart-button.component.tsx"],
+            "hub": ["libs/shared/hub/src/index.ts"],
             "product-app/BestSellingFragment": [
                 "apps/product-app/src/app/components/best-selling.component.ts"
+            ],
+            "product-app/Routes": [
+                "apps/product-app/src/app/remote-entry/entry.routes.ts"
             ],
             "shared-ui": ["libs/shared/ui/src/index.ts"],
             "shared/SharedButtonComponent": [
                 "apps/shared/src/app/components/button.component.ts"
             ],
-            "styles": ["libs/shared/styles/src/index.ts"],
-            "hub": ["libs/shared/hub/src/index.ts"]
+            "styles": ["libs/shared/styles/src/index.ts"]
         }
     },
     "exclude": ["node_modules", "tmp"]

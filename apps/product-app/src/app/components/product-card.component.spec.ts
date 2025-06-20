@@ -14,6 +14,7 @@ describe('ProductCardComponent', () => {
         fixture = TestBed.createComponent(ProductCardComponent);
         component = fixture.componentInstance;
         component.product = {
+            id: 1,
             name: 'Test',
             description: 'Test',
             imageUrl: '',
