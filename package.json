@@ -28,12 +28,13 @@
         "mongoose": "8.6.3",
         "react": "18.3.1",
         "react-dom": "18.3.1",
+        "react-router": "6.30.1",
+        "react-router-dom": "6.30.1",
         "reflect-metadata": "0.1.13",
         "rxjs": "7.8.0",
         "tslib": "2.3.0",
         "uuid": "^11.0.3",
-        "zone.js": "0.14.3",
-        "react-router-dom": "^6.23.1"
+        "zone.js": "0.14.3"
     },
     "devDependencies": {
         "@angular-devkit/build-angular": "18.1.0",
