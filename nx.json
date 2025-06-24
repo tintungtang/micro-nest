@@ -1,133 +1,154 @@
 {
-    "$schema": "./node_modules/nx/schemas/nx-schema.json",
-    "namedInputs": {
-        "default": ["{projectRoot}/**/*", "sharedGlobals"],
-        "production": [
-            "default",
-            "!{projectRoot}/.eslintrc.json",
-            "!{projectRoot}/eslint.config.js",
-            "!{projectRoot}/**/?(*.)+(spec|test).[jt]s?(x)?(.snap)",
-            "!{projectRoot}/tsconfig.spec.json",
-            "!{projectRoot}/jest.config.[jt]s",
-            "!{projectRoot}/src/test-setup.[jt]s",
-            "!{projectRoot}/test-setup.[jt]s",
-            "!{projectRoot}/cypress/**/*",
-            "!{projectRoot}/**/*.cy.[jt]s?(x)",
-            "!{projectRoot}/cypress.config.[jt]s"
-        ],
-        "sharedGlobals": []
-    },
-    "plugins": [
-        {
-            "plugin": "@nx/webpack/plugin",
-            "options": {
-                "buildTargetName": "build",
-                "serveTargetName": "serve",
-                "previewTargetName": "preview"
-            }
-        },
-        {
-            "plugin": "@nx/eslint/plugin",
-            "options": {
-                "targetName": "lint"
-            }
-        },
-        {
-            "plugin": "@nx/jest/plugin",
-            "options": {
-                "targetName": "test"
-            },
-            "exclude": [
-                "apis/auth-e2e/**/*",
-                "apis/product-e2e/**/*",
-                "apis/file-storage-e2e/**/*",
-                "apis/api-gateway-e2e/**/*"
-            ]
-        },
-        {
-            "plugin": "@nx/cypress/plugin",
-            "options": {
-                "targetName": "e2e-ui",
-                "openTargetName": "open-cypress",
-                "componentTestingTargetName": "component-test",
-                "ciTargetName": "e2e-ui"
-            }
-        },
-        {
-            "plugin": "@nx/playwright/plugin",
-            "options": {
-                "targetName": "e2e"
-            }
-        }
+  "$schema": "./node_modules/nx/schemas/nx-schema.json",
+  "namedInputs": {
+    "default": [
+      "{projectRoot}/**/*",
+      "sharedGlobals"
     ],
-    "nxCloudAccessToken": "YzE5OWI5MTEtODU2Ni00Y2U4LWI0NWItMjhkMDEyMjFjMmVkfHJlYWQtd3JpdGU=",
-    "targetDefaults": {
-        "@angular-devkit/build-angular:browser": {
-            "cache": true,
-            "dependsOn": ["^build"],
-            "inputs": ["production", "^production"]
-        },
-        "@nx/angular:webpack-browser": {
-            "inputs": [
-                "production",
-                "^production",
-                {
-                    "env": "NX_MF_DEV_REMOTES"
-                }
-            ]
-        },
-        "build": {
-            "cache": true,
-            "dependsOn": ["^build"]
-        },
-        "@nx/webpack:webpack": {
-            "inputs": [
-                "production",
-                "^production",
-                {
-                    "env": "NX_MF_DEV_REMOTES"
-                }
-            ]
-        },
-        "@nx/js:tsc": {
-            "cache": true,
-            "dependsOn": ["^build"],
-            "inputs": ["production", "^production"]
-        },
-        "@nx/angular:ng-packagr-lite": {
-            "cache": true,
-            "dependsOn": ["^build"],
-            "inputs": ["production", "^production"]
-        }
+    "production": [
+      "default",
+      "!{projectRoot}/.eslintrc.json",
+      "!{projectRoot}/eslint.config.js",
+      "!{projectRoot}/**/?(*.)+(spec|test).[jt]s?(x)?(.snap)",
+      "!{projectRoot}/tsconfig.spec.json",
+      "!{projectRoot}/jest.config.[jt]s",
+      "!{projectRoot}/src/test-setup.[jt]s",
+      "!{projectRoot}/test-setup.[jt]s",
+      "!{projectRoot}/cypress/**/*",
+      "!{projectRoot}/**/*.cy.[jt]s?(x)",
+      "!{projectRoot}/cypress.config.[jt]s"
+    ],
+    "sharedGlobals": []
+  },
+  "plugins": [
+    {
+      "plugin": "@nx/webpack/plugin",
+      "options": {
+        "buildTargetName": "build",
+        "serveTargetName": "serve",
+        "previewTargetName": "preview"
+      }
     },
-    "generators": {
-        "@nx/angular:application": {
-            "e2eTestRunner": "cypress",
-            "linter": "eslint",
-            "style": "scss",
-            "unitTestRunner": "jest"
-        },
-        "@nx/angular:component": {
-            "style": "css"
-        },
-        "@nx/react": {
-            "application": {
-                "babel": true,
-                "style": "scss",
-                "linter": "eslint",
-                "bundler": "webpack"
-            },
-            "component": {
-                "style": "scss"
-            },
-            "library": {
-                "style": "scss",
-                "linter": "eslint"
-            }
-        },
-        "@nx/angular:library": {
-            "linter": "eslint",
-            "unitTestRunner": "jest"
-        }
+    {
+      "plugin": "@nx/eslint/plugin",
+      "options": {
+        "targetName": "lint"
+      }
+    },
+    {
+      "plugin": "@nx/jest/plugin",
+      "options": {
+        "targetName": "test"
+      },
+      "exclude": [
+        "apis/auth-e2e/**/*",
+        "apis/product-e2e/**/*",
+        "apis/file-storage-e2e/**/*",
+        "apis/api-gateway-e2e/**/*"
+      ]
+    },
+    {
+      "plugin": "@nx/cypress/plugin",
+      "options": {
+        "targetName": "e2e-ui",
+        "openTargetName": "open-cypress",
+        "componentTestingTargetName": "component-test",
+        "ciTargetName": "e2e-ui"
+      }
+    },
+    {
+      "plugin": "@nx/playwright/plugin",
+      "options": {
+        "targetName": "e2e"
+      }
     }
+  ],
+  "nxCloudAccessToken": "YzE5OWI5MTEtODU2Ni00Y2U4LWI0NWItMjhkMDEyMjFjMmVkfHJlYWQtd3JpdGU=",
+  "targetDefaults": {
+    "@angular-devkit/build-angular:browser": {
+      "cache": true,
+      "dependsOn": [
+        "^build"
+      ],
+      "inputs": [
+        "production",
+        "^production"
+      ]
+    },
+    "@nx/angular:webpack-browser": {
+      "inputs": [
+        "production",
+        "^production",
+        {
+          "env": "NX_MF_DEV_REMOTES"
+        }
+      ]
+    },
+    "build": {
+      "cache": true,
+      "dependsOn": [
+        "^build"
+      ]
+    },
+    "@nx/webpack:webpack": {
+      "inputs": [
+        "production",
+        "^production",
+        {
+          "env": "NX_MF_DEV_REMOTES"
+        }
+      ]
+    },
+    "@nx/js:tsc": {
+      "cache": true,
+      "dependsOn": [
+        "^build"
+      ],
+      "inputs": [
+        "production",
+        "^production"
+      ]
+    },
+    "@nx/angular:ng-packagr-lite": {
+      "cache": true,
+      "dependsOn": [
+        "^build"
+      ],
+      "inputs": [
+        "production",
+        "^production"
+      ]
+    }
+  },
+  "generators": {
+    "@nx/angular:application": {
+      "e2eTestRunner": "cypress",
+      "linter": "eslint",
+      "style": "scss",
+      "unitTestRunner": "jest"
+    },
+    "@nx/angular:component": {
+      "style": "css"
+    },
+    "@nx/react": {
+      "application": {
+        "babel": true,
+        "style": "scss",
+        "linter": "eslint",
+        "bundler": "webpack"
+      },
+      "component": {
+        "style": "scss"
+      },
+      "library": {
+        "style": "scss",
+        "linter": "eslint"
+      }
+    },
+    "@nx/angular:library": {
+      "linter": "eslint",
+      "unitTestRunner": "jest"
+    }
+  },
+  "defaultBase": "main"
 }
