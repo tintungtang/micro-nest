@@ -1,12 +1,12 @@
-import ReactDOM from 'react-dom';
+import React from 'react';
 import { BrowserRouter, Route, Routes } from 'react-router-dom';
-import OrderListPage from './order-list-page';
+import SimpleOrderPage from './simple-order-page';
 
 export function App() {
     return (
         <BrowserRouter>
             <Routes>
-                <Route path="/pages/cart" element={<OrderListPage />} />
+                <Route path="/pages/cart" element={<SimpleOrderPage />} />
                 <Route
                     path="*"
                     element={

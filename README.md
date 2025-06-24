@@ -207,6 +207,68 @@ We welcome contributions to **MicroNest**! Whether you're fixing a bug, improvin
 
 Thank you for your contributions! Together, we can make **MicroNest** better.
 
+## Cart Application Features
+
+The Cart micro-frontend is a React-based application that provides comprehensive shopping cart functionality:
+
+### Key Features
+- **Add to Cart**: Users can add products to their shopping cart
+- **Quantity Management**: Increase/decrease item quantities with intuitive controls
+- **Remove Items**: Remove individual items from the cart
+- **Cart Persistence**: Cart data is saved in localStorage across browser sessions
+- **Real-time Updates**: Cart count updates automatically across the application
+- **Responsive Design**: Works seamlessly on desktop and mobile devices
+
+### Cart Components
+- **Cart Button**: Reusable web component showing cart item count with badge
+- **Cart Page**: Full cart management interface with item list and summary
+- **Quantity Controls**: Interactive buttons for adjusting item quantities
+
+### Cart Usage
+```bash
+# Start the cart application
+npx nx serve cart
+
+# Build cart for production
+npx nx build cart
+
+# Run cart tests
+npx nx test cart
+```
+
+The cart application runs on port 4203 by default and integrates with other micro-frontends through custom events and web components.
+
+## Quick Start Guide
+
+### Development Setup
+1. **Install Dependencies**
+   ```bash
+   npm install
+   ```
+
+2. **Start All Applications**
+   ```bash
+   # Start backend services
+   npx nx run-many -t serve -p auth product file-storage
+
+   # Start frontend applications
+   npx nx run-many -t serve -p storefront cart product-app auth-app
+   ```
+
+3. **Access Applications**
+   - Main Storefront: http://localhost:4200
+   - Cart App: http://localhost:4203
+   - Product App: http://localhost:4202
+
+### Testing
+```bash
+# Run all tests
+npx nx run-many -t test
+
+# Test specific app
+npx nx test cart
+npx nx test product
+```
 
 ## License
 MIT License
