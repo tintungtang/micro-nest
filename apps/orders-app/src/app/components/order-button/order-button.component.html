@@ -1,3 +1,11 @@
-<button class="w-100 btn btn-primary btn-lg" type="submit">
-    Continue to checkout
-</button>
+<span class="p-2 mx-1 position-relative" (click)="navigateToCart()">
+    <svg width="24" height="24">
+        <use xlink:href="#shopping-bag"></use>
+    </svg>
+    <span
+        *ngIf="count > 0"
+        class="position-absolute top-0 start-100 translate-middle badge rounded-pill bg-primary"
+    >
+        {{ count }}
+    </span>
+</span>

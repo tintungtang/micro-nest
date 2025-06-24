@@ -4,7 +4,7 @@ import { RouterOutlet } from '@angular/router';
 
 @Component({
     standalone: true,
-    imports: [ CommonModule, RouterOutlet ],
+    imports: [CommonModule, RouterOutlet],
     selector: 'mfe-product-entry',
     template: `<router-outlet></router-outlet>`,
 })

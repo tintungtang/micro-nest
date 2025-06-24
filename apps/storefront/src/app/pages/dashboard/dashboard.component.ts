@@ -36,7 +36,6 @@ import { BestSellingComponent } from 'product-app/BestSellingFragment';
         FeaturesComponent,
         MfeButtonComponent,
         BestSellingComponent,
-        OrderButtonComponent,
     ],
     templateUrl: './dashboard.component.html',
 })

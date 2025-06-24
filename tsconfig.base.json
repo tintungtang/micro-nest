@@ -27,7 +27,7 @@
                 "apps/orders-app/src/app/remote-entry/entry.routes.ts"
             ],
             "orders-app/OrderButton": [
-                "apps/orders-app/src/app/components/order-button.component.ts"
+                "apps/orders-app/src/app/components/order-button/order-button.component.ts"
             ],
             "product-app/BestSellingFragment": [
                 "apps/product-app/src/app/components/best-selling.component.ts"
