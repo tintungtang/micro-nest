@@ -1,0 +1,9 @@
+<button class="w-100 btn btn-primary btn-lg position-relative" type="submit">
+    Continue to checkout
+    <span
+        *ngIf="count > 0"
+        class="position-absolute top-0 start-100 translate-middle badge rounded-pill bg-primary"
+    >
+        {{ count }}
+    </span>
+</button>
