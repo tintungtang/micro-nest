@@ -5,7 +5,7 @@ import { ActivatedRoute, Router, RouterLink } from '@angular/router';
 @Component({
     selector: 'mfe-product-card',
     standalone: true,
-    imports: [ CommonModule, RouterLink],
+    imports: [CommonModule, RouterLink],
     templateUrl: './product-card.component.html',
     encapsulation: ViewEncapsulation.Emulated,
 })
@@ -15,10 +15,11 @@ export class ProductCardComponent {
     @Input() showAddToCart = true;
     @Output() addToCart = new EventEmitter<void>();
 
-    constructor(private readonly router: Router) {}
+    constructor(private readonly router: Router) { }
 
     onAddToCart() {
         this.addToCart.emit();
+        console.log(`Product ${this.productId} added to cart`);
     }
 
     viewDetails() {
