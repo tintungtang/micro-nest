@@ -4,7 +4,7 @@ const config: ModuleFederationConfig = {
     name: 'orders-app',
     exposes: {
         './Routes': 'apps/orders-app/src/app/routes/orders.routes.ts',
-        './OrderButton': 'apps/orders-app/src/app/components/order-button.component.ts'
+        './OrderButton': 'apps/orders-app/src/app/components/order-button-element.ts'
     },
 };
 
