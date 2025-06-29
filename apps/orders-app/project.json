@@ -22,7 +22,6 @@
                     }
                 ],
                 "styles": [
-                    "libs/shared/styles/src/shared.scss",
                     "apps/orders-app/src/styles.css"
                 ],
                 "scripts": [],
