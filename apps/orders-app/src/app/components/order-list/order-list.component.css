@@ -1,63 +1,56 @@
-.multi-order-list {
-  max-width: 700px;
-  margin: 24px auto;
-  padding: 24px;
-  background: #fffefa;
-  border-radius: 12px;
-  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.08);
-  font-family: 'Segoe UI', sans-serif;
+.order-page-container {
+  width: 100%;
+  min-height: 100vh;
+  /* full height viewport */
+  padding: 32px;
+  box-sizing: border-box;
+  background: #f9f9f9;
 }
 
-.multi-order-list h2 {
-  text-align: center;
-  color: #ff6b00;
-  margin-bottom: 32px;
+.multi-order-list {
+  max-width: 1200px;
+  margin: 0 auto;
 }
 
 .order-card {
-  border: 1px solid #eee;
+  background: white;
+  border-radius: 8px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
   padding: 16px;
-  border-radius: 10px;
-  margin-bottom: 16px;
-  background: #fff;
+  margin-bottom: 24px;
 }
 
 .order-header {
   display: flex;
   align-items: center;
-  gap: 12px;
-  margin-bottom: 8px;
+  justify-content: space-between;
 }
 
 .order-header img {
   width: 48px;
   height: 48px;
   border-radius: 50%;
+  margin-right: 16px;
 }
 
 .customer-info h4 {
   margin: 0;
-  font-size: 16px;
-  color: #333;
+  font-size: 18px;
 }
 
 .customer-info p {
   margin: 0;
   font-size: 14px;
-  color: #777;
+  color: #666;
 }
 
 .total {
-  margin-left: auto;
   font-weight: bold;
   font-size: 16px;
-  color: #28a745;
+  color: #2c3e50;
 }
 
 .food-items {
-  list-style: none;
-  margin: 0;
-  padding-left: 16px;
-  font-size: 15px;
-  color: #444;
+  margin-top: 12px;
+  padding-left: 20px;
 }

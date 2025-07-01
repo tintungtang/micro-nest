@@ -3,11 +3,6 @@ import { loadRemoteWithFallback } from 'hub';
 
 export const appRoutes: Route[] = [
     {
-        path: 'orders-app',
-        loadChildren: () =>
-            import('orders-app/Routes').then((m) => m.remoteRoutes),
-    },
-    {
         path: 'pages',
         loadChildren: () =>
             import('./pages/pages.routes').then((c) => c.pagesRoutes),

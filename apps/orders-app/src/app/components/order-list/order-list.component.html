@@ -1,19 +1,21 @@
-<div class="multi-order-list">
-  <h2>All Orders 🧾</h2>
-  <div class="order-card" *ngFor="let order of orders">
-    <div class="order-header">
-      <img [src]="order.avatar" alt="{{ order.name }}" />
-      <div class="customer-info">
-        <h4>{{ order.name }}</h4>
-        <p>{{ order.address }}</p>
+<div class="order-page-container">
+  <div class="multi-order-list">
+    <h2>All Orders 🧾</h2>
+    <div class="order-card" *ngFor="let order of orders">
+      <div class="order-header">
+        <img [src]="order.avatar" alt="{{ order.name }}" />
+        <div class="customer-info">
+          <h4>{{ order.name }}</h4>
+          <p>{{ order.address }}</p>
+        </div>
+        <span class="total">${{ order.total }}</span>
       </div>
-      <span class="total">${{ order.total }}</span>
-    </div>
 
-    <ul class="food-items">
-      <li *ngFor="let item of order.items">
-        🍽️ {{ item }}
-      </li>
-    </ul>
+      <ul class="food-items">
+        <li *ngFor="let item of order.items">
+          🍽️ {{ item }}
+        </li>
+      </ul>
+    </div>
   </div>
 </div>

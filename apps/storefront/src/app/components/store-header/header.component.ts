@@ -20,6 +20,8 @@ export class HeaderComponent implements AfterViewInit {
   @ViewChild('orderButtonContainer', { read: ViewContainerRef })
   viewContainerRef!: ViewContainerRef;
 
+  constructor(private injector: Injector) { }
+
   async ngAfterViewInit(): Promise<void> {
     const module = await loadRemoteModule({
       type: 'module',
@@ -28,6 +30,8 @@ export class HeaderComponent implements AfterViewInit {
     });
 
     const component = module.OrderButtonComponent;
-    this.viewContainerRef.createComponent(component);
+    this.viewContainerRef.createComponent(component, {
+      injector: this.injector,
+    });
   }
 }

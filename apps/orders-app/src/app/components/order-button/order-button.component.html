@@ -1,10 +1,3 @@
-<button (click)="toggleModal()" class="btn btn-primary">
+<button (click)="goToOrders()" class="btn btn-primary">
     🧾 View Orders
 </button>
-
-<div class="modal-backdrop" *ngIf="showOrders" (click)="closeModal($event)">
-    <div class="modal-content" (click)="$event.stopPropagation()">
-        <button class="close-btn" (click)="toggleModal()">×</button>
-        <mfe-order-order-list></mfe-order-order-list>
-    </div>
-</div>

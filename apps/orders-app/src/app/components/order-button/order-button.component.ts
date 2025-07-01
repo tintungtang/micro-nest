@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { OrderListComponent } from '../order-list/order-list.component';
+import { Router } from '@angular/router';
 
 @Component({
     selector: 'mfe-order-order-button',
@@ -10,14 +11,14 @@ import { OrderListComponent } from '../order-list/order-list.component';
     styleUrl: './order-button.component.css',
 })
 export class OrderButtonComponent {
-    showOrders = false;
+    constructor(private router: Router) { }
 
-    toggleModal() {
-        this.showOrders = !this.showOrders;
-    }
-
-    closeModal(event: Event) {
-        event.stopPropagation();
-        this.showOrders = false;
+    goToOrders() {
+        console.log('🔁 Trying to navigate to /pages/orders-app...');
+        this.router.navigateByUrl('/pages/orders-app').then(result => {
+            console.log('✅ Navigation result:', result);
+        }).catch(error => {
+            console.error('❌ Navigation error:', error);
+        });
     }
 }
