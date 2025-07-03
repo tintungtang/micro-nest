@@ -1,4 +1,4 @@
-import { Component, Input, Output, EventEmitter } from '@angular/core';
+import { Component, Input, Output, EventEmitter, OnInit, OnDestroy } from '@angular/core';
 import { CommonModule } from '@angular/common';
 
 export type ButtonVariant = 'primary' | 'outline';
@@ -182,7 +182,7 @@ export type ButtonSize = 'small' | 'medium' | 'large';
         }
     `]
 })
-export class OrderButtonComponent {
+export class OrderButtonComponent implements OnInit, OnDestroy {
     @Input() buttonText = 'Add to Order';
     @Input() orderCount = 0;
     @Input() variant: ButtonVariant = 'primary';
@@ -193,6 +193,58 @@ export class OrderButtonComponent {
     @Input() price?: number;
     
     @Output() orderClick = new EventEmitter<{ productId?: string; productName?: string; price?: number }>();
+
+    // Event listener references for cleanup
+    private readonly orderAddedListener: (event: Event) => void;
+    private readonly storageListener: (event: StorageEvent) => void;
+
+    constructor() {
+        // Initialize event listeners
+        this.orderAddedListener = (event: Event) => {
+            const customEvent = event as CustomEvent;
+            if (customEvent.detail?.totalOrders) {
+                this.orderCount = customEvent.detail.totalOrders;
+                console.log('OrderButton: Order count updated via event:', this.orderCount);
+            } else {
+                // Fallback: reload from localStorage
+                this.loadOrderCount();
+            }
+        };
+
+        this.storageListener = (event: StorageEvent) => {
+            if (event.key === 'orders') {
+                this.loadOrderCount();
+            }
+        };
+    }
+
+    ngOnInit() {
+        // Load initial order count
+        this.loadOrderCount();
+        
+        // Set up event listeners
+        window.addEventListener('orderAdded', this.orderAddedListener);
+        window.addEventListener('storage', this.storageListener);
+        
+        console.log('OrderButton: Initialized with order count:', this.orderCount);
+    }
+
+    ngOnDestroy() {
+        // Clean up event listeners
+        window.removeEventListener('orderAdded', this.orderAddedListener);
+        window.removeEventListener('storage', this.storageListener);
+    }
+
+    private loadOrderCount(): void {
+        try {
+            const orders = JSON.parse(localStorage.getItem('orders') ?? '[]');
+            this.orderCount = orders.length;
+            console.log('OrderButton: Loaded order count from localStorage:', this.orderCount);
+        } catch (error) {
+            console.error('OrderButton: Error loading order count:', error);
+            this.orderCount = 0;
+        }
+    }
 
     onOrderClick(): void {
         if (!this.disabled) {

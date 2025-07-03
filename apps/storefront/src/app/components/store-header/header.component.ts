@@ -35,7 +35,7 @@ export class HeaderComponent implements AfterViewInit, OnDestroy {
             if (customEvent.detail?.totalOrders) {
                 this.orderCount = customEvent.detail.totalOrders;
                 console.log('Order count updated via event:', this.orderCount);
-                this.updateOrderButtonCount();
+                // Note: OrderButton component now handles its own count updates
             } else {
                 // Fallback: reload from localStorage
                 this.loadOrderCount();
@@ -107,7 +107,7 @@ export class HeaderComponent implements AfterViewInit, OnDestroy {
                     const instance = this.orderButtonComponent.instance as Record<string, unknown>;
                     if (instance) {
                         instance['buttonText'] = 'Orders';
-                        instance['orderCount'] = this.orderCount;
+                        // Note: orderCount is now managed automatically by OrderButton component
                         instance['variant'] = 'primary';
                         instance['size'] = 'small';                        // Subscribe to outputs if available
                         const orderClick = instance['orderClick'];
@@ -136,18 +136,10 @@ export class HeaderComponent implements AfterViewInit, OnDestroy {
             this.orderCount = orders.length;
             console.log('Loaded order count:', this.orderCount);
             
-            // Update the dynamic component if it exists
-            this.updateOrderButtonCount();
+            // Note: OrderButton component now handles its own count updates
         } catch (error) {
             console.error('Error loading order count:', error);
             this.orderCount = 0;
-        }
-    }
-
-    private updateOrderButtonCount() {
-        if (this.orderButtonComponent?.instance) {
-            const instance = this.orderButtonComponent.instance as Record<string, unknown>;
-            instance['orderCount'] = this.orderCount;
         }
     }
 
