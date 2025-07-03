@@ -1,40 +1,47 @@
 {
-    "compileOnSave": false,
-    "compilerOptions": {
-        "rootDir": ".",
-        "sourceMap": true,
-        "declaration": false,
-        "moduleResolution": "node",
-        "emitDecoratorMetadata": true,
-        "experimentalDecorators": true,
-        "importHelpers": true,
-        "target": "es2015",
-        "module": "esnext",
-        "lib": ["es2020", "dom"],
-        "skipLibCheck": true,
-        "skipDefaultLibCheck": true,
-        "baseUrl": ".",
-        "paths": {
-            "auth-app/Routes": [
-                "apps/auth-app/src/app/remote-entry/entry.routes.ts"
-            ],
-            "cart/CartButton": [
-                "apps/cart/src/app/components/cart-button.component.tsx"
-            ],
-            "cart/Module": ["apps/cart/src/remote-entry.ts"],
-            "hub": ["libs/shared/hub/src/index.ts"],
-            "product-app/BestSellingFragment": [
-                "apps/product-app/src/app/components/best-selling.component.ts"
-            ],
-            "product-app/Routes": [
-                "apps/product-app/src/app/remote-entry/entry.routes.ts"
-            ],
-            "shared-ui": ["libs/shared/ui/src/index.ts"],
-            "shared/SharedButtonComponent": [
-                "apps/shared/src/app/components/button.component.ts"
-            ],
-            "styles": ["libs/shared/styles/src/index.ts"]
-        }
-    },
-    "exclude": ["node_modules", "tmp"]
+  "compileOnSave": false,
+  "compilerOptions": {
+    "rootDir": ".",
+    "sourceMap": true,
+    "declaration": false,
+    "moduleResolution": "node",
+    "emitDecoratorMetadata": true,
+    "experimentalDecorators": true,
+    "importHelpers": true,
+    "target": "es2015",
+    "module": "esnext",
+    "lib": ["es2020", "dom"],
+    "skipLibCheck": true,
+    "skipDefaultLibCheck": true,
+    "baseUrl": ".",
+    "paths": {
+      "auth-app/Routes": ["apps/auth-app/src/app/remote-entry/entry.routes.ts"],
+      "cart/CartButton": [
+        "apps/cart/src/app/components/cart-button.component.tsx"
+      ],
+      "cart/Module": ["apps/cart/src/remote-entry.ts"],
+      "hub": ["libs/shared/hub/src/index.ts"],
+      "orders-app/Routes": [
+        "apps/orders-app/src/app/remote-entry/entry.routes.ts"
+      ],
+      "orders-app/OrderButton": [
+        "apps/orders-app/src/app/components/order-button.component.ts"
+      ],
+      "orders-app/OrderList": [
+        "apps/orders-app/src/app/components/order-list.component.ts"
+      ],
+      "product-app/BestSellingFragment": [
+        "apps/product-app/src/app/components/best-selling.component.ts"
+      ],
+      "product-app/Routes": [
+        "apps/product-app/src/app/remote-entry/entry.routes.ts"
+      ],
+      "shared-ui": ["libs/shared/ui/src/index.ts"],
+      "shared/SharedButtonComponent": [
+        "apps/shared/src/app/components/button.component.ts"
+      ],
+      "styles": ["libs/shared/styles/src/index.ts"]
+    }
+  },
+  "exclude": ["node_modules", "tmp"]
 }
