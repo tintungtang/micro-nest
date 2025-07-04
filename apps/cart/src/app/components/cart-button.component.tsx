@@ -29,7 +29,7 @@ const CartButton = () => {
         <a
             className="p-2 mx-1 position-relative"
             onClick={() => navigate('/pages/cart')}
-        >
+        >abc1
             <svg width="24" height="24">
                 <use xlinkHref="#shopping-bag"></use>
             </svg>
@@ -59,7 +59,7 @@ export function defineCartButtonElement() {
             this._root = undefined;
         }
     }
-
+    console.log(3232)
     if (!customElements.get('mfe-cart-button')) {
         customElements.define('mfe-cart-button', CartButtonElement);
     }
