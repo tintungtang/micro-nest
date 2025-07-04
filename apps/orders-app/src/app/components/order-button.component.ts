@@ -1,5 +1,5 @@
-import { Component, OnInit, OnDestroy, createComponent, ApplicationRef, Injector, EnvironmentInjector, inject } from '@angular/core';
 import { CommonModule } from '@angular/common';
+import { Component, OnDestroy, OnInit } from '@angular/core';
 import { RouterModule } from '@angular/router';
 
 const CART_KEY = 'cartItems';
@@ -10,8 +10,8 @@ const CART_KEY = 'cartItems';
     imports: [CommonModule, RouterModule],
     template: `
         <a
-            class="order-button p-2 mx-1 position-relative"
-            [routerLink]="['/orders']"
+            class="op-2 mx-1"
+            [routerLink]="['/orders-app']"
             type="button">
             <svg width="24" height="24">
                 <use xlinkHref="#shopping-bag"></use>
@@ -67,7 +67,7 @@ export function defineOrderButtonElement() {
         connectedCallback() {
             if (!this.componentRef) {
                 this.innerHTML = `
-                    <a class="order-button p-2 mx-1 position-relative" href="/orders" style="text-decoration: none; cursor: pointer; display: inline-block;">
+                    <a class="p-2 mx-1" href="/orders-app">
                         <svg width="24" height="24">
                             <use xlink:href="#shopping-bag"></use>
                         </svg>

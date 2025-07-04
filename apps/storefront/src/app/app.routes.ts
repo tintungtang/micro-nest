@@ -1,11 +1,10 @@
 import { Route } from '@angular/router';
-import { loadRemoteWithFallback } from 'hub';
 
 export const appRoutes: Route[] = [
     {
         path: 'orders-app',
         loadChildren: () =>
-            import('orders-app/Routes').then((m) => m.remoteRoutes),
+            import('orders-app/Routes').then((m) => m.ordersRoutes),
     },
     {
         path: 'pages',
