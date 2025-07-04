@@ -7,7 +7,7 @@ const config: ModuleFederationConfig = {
         ['product-app', 'http://localhost:4203/remoteEntry.mjs'],
         ['cart', 'http://localhost:4204/remoteEntry.js'],
         ['shared', 'http://localhost:4205/remoteEntry.mjs'],
-        'orders-app',
+        ['orders-app', 'http://localhost:4206/remoteEntry.mjs'],
     ],
 };
 
