@@ -5,9 +5,8 @@ import { MfeStorefrontSectionComponent } from '../../components/section/section.
 
 @Component({
     selector: 'mfe-storefront-sample',
-    standalone: true,
-    imports: [ CommonModule, MfeButtonComponent, MfeStorefrontSectionComponent ],
+    imports: [CommonModule, MfeButtonComponent, MfeStorefrontSectionComponent],
     templateUrl: './sample.component.html',
-    styleUrl: './sample.component.css',
+    styleUrl: './sample.component.css'
 })
 export class SampleComponent {}

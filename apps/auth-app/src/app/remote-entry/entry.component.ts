@@ -3,9 +3,8 @@ import { CommonModule } from '@angular/common';
 import { NxWelcomeComponent } from './nx-welcome.component';
 
 @Component({
-  standalone: true,
-  imports: [CommonModule, NxWelcomeComponent],
-  selector: 'mfe-auth-entry',
-  template: `<mfe-auth-nx-welcome></mfe-auth-nx-welcome>`,
+    imports: [CommonModule, NxWelcomeComponent],
+    selector: 'mfe-auth-entry',
+    template: `<mfe-auth-nx-welcome></mfe-auth-nx-welcome>`
 })
 export class RemoteEntryComponent {}

@@ -17,7 +17,6 @@ import { SharedButtonComponent } from 'shared/SharedButtonComponent';
 import { BestSellingComponent } from 'product-app/BestSellingFragment';
 
 @Component({
-    standalone: true,
     selector: 'mfe-storefront-dashboard',
     imports: [
         SharedButtonComponent,
@@ -37,6 +36,7 @@ import { BestSellingComponent } from 'product-app/BestSellingFragment';
         MfeButtonComponent,
         BestSellingComponent
     ],
-    templateUrl: './dashboard.component.html',
+    standalone: true,
+    templateUrl: './dashboard.component.html'
 })
 export class DashboardComponent {}

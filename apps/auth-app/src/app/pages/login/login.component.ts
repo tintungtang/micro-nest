@@ -4,15 +4,14 @@ import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
 
 @Component({
-  standalone: true,
-  selector: 'mfe-auth-login-page',
-  imports: [CommonModule, FormsModule],
-  template: `
+    selector: 'mfe-auth-login-page',
+    imports: [CommonModule, FormsModule],
+    template: `
     <h2>Login</h2>
     <form (ngSubmit)="login()">
 
     </form>
-  `,
+  `
 })
 export class LoginComponent {
   username = '';
