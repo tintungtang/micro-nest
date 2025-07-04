@@ -1,5 +1,5 @@
-import { AfterViewInit, Component, CUSTOM_ELEMENTS_SCHEMA } from '@angular/core';
 import { CommonModule } from '@angular/common';
+import { AfterViewInit, Component, CUSTOM_ELEMENTS_SCHEMA } from '@angular/core';
 
 @Component({
     selector: 'mfe-storefront-dashboard-header',
@@ -10,6 +10,6 @@ import { CommonModule } from '@angular/common';
 })
 export class HeaderComponent implements AfterViewInit {
     async ngAfterViewInit(): Promise<void> {
-        await import('cart/CartButton');
+        await import('orders-app/OrderButton');
     }
 }
