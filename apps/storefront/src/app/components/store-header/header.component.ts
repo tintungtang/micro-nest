@@ -10,6 +10,6 @@ import { CommonModule } from '@angular/common';
 })
 export class HeaderComponent implements AfterViewInit {
     async ngAfterViewInit(): Promise<void> {
-        await import('cart/CartButton');
+        await import('orders-app/OrderButton');
     }
 }

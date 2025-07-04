@@ -18,8 +18,11 @@
             "auth-app/Routes": [
                 "apps/auth-app/src/app/remote-entry/entry.routes.ts"
             ],
-            "cart/CartButton": [
-                "apps/cart/src/app/components/cart-button.component.tsx"
+            "orders-app/Routes": [
+                "apps/orders-app/src/app/routes/orders.routes.ts"
+            ],
+            "orders-app/OrderButton": [
+                "apps/orders-app/src/app/components/order-button.component.ts"
             ],
             "cart/Module": ["apps/cart/src/remote-entry.ts"],
             "hub": ["libs/shared/hub/src/index.ts"],

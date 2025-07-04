@@ -12,6 +12,11 @@ export const appRoutes: Route[] = [
       loadChildren: () =>
           import('auth-app/Routes').then((m) => m.remoteRoutes),
   },
+  {
+      path: 'orders',
+      loadChildren: () =>
+          import('orders-app/Routes').then((m) => m.ordersRoutes),
+  },
     {
         path: '',
         redirectTo: 'pages',
