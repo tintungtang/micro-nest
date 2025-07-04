@@ -21,8 +21,14 @@
             "cart/CartButton": [
                 "apps/cart/src/app/components/cart-button.component.tsx"
             ],
+            "orders-app/OrderButton": [
+                "apps/orders-app/src/app/components/order-button.component.ts"
+            ],
             "cart/Module": ["apps/cart/src/remote-entry.ts"],
             "hub": ["libs/shared/hub/src/index.ts"],
+            "orders-app/Routes": [
+                "apps/orders-app/src/app/routes/orders.routes.ts"
+            ],
             "product-app/BestSellingFragment": [
                 "apps/product-app/src/app/components/best-selling.component.ts"
             ],
