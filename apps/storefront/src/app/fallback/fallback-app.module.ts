@@ -4,10 +4,9 @@ import { Component } from '@angular/core';
 import { MfeStorefrontSectionComponent } from '../components/section/section.component';
 
 @Component({
-  selector: 'mfe-storefront-fallback',
-  template: `<mfe-storefront-section>{{name || 'App'}} is currently unavailable. Please try again later.</mfe-storefront-section>`,
-  standalone: true,
-    imports: [ CommonModule, MfeStorefrontSectionComponent ]
+    selector: 'mfe-storefront-fallback',
+    template: `<mfe-storefront-section>{{name || 'App'}} is currently unavailable. Please try again later.</mfe-storefront-section>`,
+    imports: [CommonModule, MfeStorefrontSectionComponent]
 })
 export class FallbackAppComponent {
     @Input() name = 'App';

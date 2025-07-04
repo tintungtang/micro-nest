@@ -2,10 +2,9 @@ import { Component } from '@angular/core';
 import { CommonModule } from '@angular/common';
 
 @Component({
-  selector: 'mfe-auth-nx-welcome',
-  standalone: true,
-  imports: [CommonModule],
-  template: `
+    selector: 'mfe-auth-nx-welcome',
+    imports: [CommonModule],
+    template: `
     <div class="p-4">
       <div class="max-w-md mx-auto bg-white rounded shadow">
         <div class="p-6">
@@ -14,7 +13,7 @@ import { CommonModule } from '@angular/common';
         </div>
       </div>
     </div>
-  `,
+  `
 })
 export class NxWelcomeComponent {}
 

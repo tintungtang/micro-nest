@@ -87,7 +87,9 @@
                 {
                     "env": "NX_MF_DEV_REMOTES"
                 }
-            ]
+            ],
+            "dependsOn": ["^build"],
+            "cache": true
         },
         "@nx/js:tsc": {
             "cache": true,
@@ -98,6 +100,12 @@
             "cache": true,
             "dependsOn": ["^build"],
             "inputs": ["production", "^production"]
+        },
+        "e2e-ci--**/**": {
+            "dependsOn": ["^build"]
+        },
+        "e2e-ui--**/**": {
+            "dependsOn": ["^build"]
         }
     },
     "generators": {
@@ -129,5 +137,6 @@
             "linter": "eslint",
             "unitTestRunner": "jest"
         }
-    }
+    },
+    "useLegacyCache": true
 }

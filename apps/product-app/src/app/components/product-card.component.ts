@@ -4,10 +4,9 @@ import { ActivatedRoute, Router, RouterLink } from '@angular/router';
 
 @Component({
     selector: 'mfe-product-card',
-    standalone: true,
-    imports: [ CommonModule, RouterLink],
+    imports: [CommonModule, RouterLink],
     templateUrl: './product-card.component.html',
-    encapsulation: ViewEncapsulation.Emulated,
+    encapsulation: ViewEncapsulation.Emulated
 })
 export class ProductCardComponent {
     @Input() product!: { id: number; name: string; description: string; imageUrl: string; price: number };
