@@ -1,0 +1,103 @@
+{
+    "name": "orders",
+    "$schema": "../../node_modules/nx/schemas/project-schema.json",
+    "projectType": "application",
+    "prefix": "mfe-order",
+    "sourceRoot": "apps/orders/src",
+    "tags": [],
+    "targets": {
+        "build": {
+            "executor": "@nx/angular:webpack-browser",
+            "outputs": ["{options.outputPath}"],
+            "options": {
+                "outputPath": "dist/apps/orders",
+                "index": "apps/orders/src/index.html",
+                "main": "apps/orders/src/main.ts",
+                "polyfills": ["zone.js"],
+                "tsConfig": "apps/orders/tsconfig.app.json",
+                "assets": [
+                    {
+                        "glob": "**/*",
+                        "input": "apps/orders/public"
+                    }
+                ],
+                "styles": ["apps/orders/src/styles.css"],
+                "scripts": [],
+                "customWebpackConfig": {
+                    "path": "apps/orders/webpack.config.ts"
+                }
+            },
+            "configurations": {
+                "production": {
+                    "budgets": [
+                        {
+                            "type": "initial",
+                            "maximumWarning": "500kb",
+                            "maximumError": "1mb"
+                        },
+                        {
+                            "type": "anyComponentStyle",
+                            "maximumWarning": "4kb",
+                            "maximumError": "8kb"
+                        }
+                    ],
+                    "outputHashing": "all",
+                    "customWebpackConfig": {
+                        "path": "apps/orders/webpack.prod.config.ts"
+                    }
+                },
+                "development": {
+                    "buildOptimizer": false,
+                    "optimization": false,
+                    "vendorChunk": true,
+                    "extractLicenses": false,
+                    "sourceMap": true,
+                    "namedChunks": true
+                }
+            },
+            "defaultConfiguration": "production"
+        },
+        "serve": {
+            "executor": "@nx/angular:dev-server",
+            "options": {
+                "port": 4206,
+                "publicHost": "http://localhost:4206"
+            },
+            "configurations": {
+                "production": {
+                    "buildTarget": "orders:build:production"
+                },
+                "development": {
+                    "buildTarget": "orders:build:development"
+                }
+            },
+            "defaultConfiguration": "development"
+        },
+        "extract-i18n": {
+            "executor": "@angular-devkit/build-angular:extract-i18n",
+            "options": {
+                "buildTarget": "orders:build"
+            }
+        },
+        "lint": {
+            "executor": "@nx/eslint:lint"
+        },
+        "serve-static": {
+            "executor": "@nx/web:file-server",
+            "defaultConfiguration": "production",
+            "options": {
+                "buildTarget": "orders:build",
+                "port": 4206,
+                "watch": false
+            },
+            "configurations": {
+                "development": {
+                    "buildTarget": "orders:build:development"
+                },
+                "production": {
+                    "buildTarget": "orders:build:production"
+                }
+            }
+        }
+    }
+}
