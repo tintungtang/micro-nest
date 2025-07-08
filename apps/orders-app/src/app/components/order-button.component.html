@@ -1,0 +1,16 @@
+<a
+    class="p-2 mx-1"
+    (click)="navigateToOrders()"
+    style="cursor: pointer; text-decoration: none"
+>
+    <svg width="24" height="24" viewBox="0 0 24 24" fill="currentColor">
+        <path
+            d="M7 4h14v2l-1 9H8l-1-9H5V4H3V2h4l1 2zM9 7v7h10V7H9zm3 9a2 2 0 1 1 0 4 2 2 0 0 1 0-4zm6 0a2 2 0 1 1 0 4 2 2 0 0 1 0-4z"
+        />
+    </svg>
+
+    <span *ngIf="count > 0" class="badge">
+        {{ count }}
+        <span class="visually-hidden">items in cart</span>
+    </span>
+</a>
