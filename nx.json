@@ -74,7 +74,9 @@
                 {
                     "env": "NX_MF_DEV_REMOTES"
                 }
-            ]
+            ],
+            "dependsOn": ["^build"],
+            "cache": true
         },
         "build": {
             "cache": true,

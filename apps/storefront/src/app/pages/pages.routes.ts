@@ -14,7 +14,13 @@ export const pagesRoutes: Route[] = [
                 loadChildren: () =>
                     import('product-app/Routes').then((m) => m.remoteRoutes)
             },
+            {
+                path: 'orders',
+                loadChildren: () =>
+                  import('ordersApp/Routes').then((m) => m.remoteRoutes),
+            },
             { path: '', redirectTo: 'dashboard', pathMatch: 'full' },
+            
         ]
     }
 ];

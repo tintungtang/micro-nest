@@ -1,0 +1,24 @@
+<a
+class="p-2 mx-1 position-relative mfe-order-button-link"
+(click)="navigateToOrders()"
+style="cursor: pointer;"
+>
+<svg
+    width="24"
+    height="24"
+    viewBox="0 0 24 24"
+    fill="none"
+    xmlns="http://www.w3.org/2000/svg"
+>
+    <path
+        d="M6 2L5 6H19L18 2H6ZM5 8V22H19V8H5ZM12 10C13.1 10 14 10.9 14 12H10C10 10.9 10.9 10 12 10Z"
+        fill="currentColor"
+    />
+</svg>
+<span
+    class="position-absolute top-0 start-100 translate-middle badge rounded-pill bg-primary"
+    *ngIf="count > 0"
+>
+    {{ count }}
+</span>
+</a>

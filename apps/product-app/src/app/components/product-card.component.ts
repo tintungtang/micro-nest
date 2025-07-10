@@ -17,6 +17,7 @@ export class ProductCardComponent {
     constructor(private readonly router: Router) {}
 
     onAddToCart() {
+        console.log('[AddToCart]', this.product);
         this.addToCart.emit();
     }
 
