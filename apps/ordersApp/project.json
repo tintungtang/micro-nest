@@ -1,0 +1,110 @@
+{
+    "name": "ordersApp",
+    "$schema": "../../node_modules/nx/schemas/project-schema.json",
+    "projectType": "application",
+    "prefix": "mfe-order",
+    "sourceRoot": "apps/ordersApp/src",
+    "tags": [],
+    "targets": {
+        "build": {
+            "executor": "@nx/angular:webpack-browser",
+            "outputs": ["{options.outputPath}"],
+            "options": {
+                "outputPath": "dist/apps/ordersApp",
+                "index": "apps/ordersApp/src/index.html",
+                "main": "apps/ordersApp/src/main.ts",
+                "polyfills": ["zone.js"],
+                "tsConfig": "apps/ordersApp/tsconfig.app.json",
+                "assets": [
+                    {
+                        "glob": "**/*",
+                        "input": "apps/ordersApp/public"
+                    }
+                ],
+                "styles": ["apps/ordersApp/src/styles.css"],
+                "scripts": [],
+                "customWebpackConfig": {
+                    "path": "apps/ordersApp/webpack.config.ts"
+                }
+            },
+            "configurations": {
+                "production": {
+                    "budgets": [
+                        {
+                            "type": "initial",
+                            "maximumWarning": "500kb",
+                            "maximumError": "1mb"
+                        },
+                        {
+                            "type": "anyComponentStyle",
+                            "maximumWarning": "4kb",
+                            "maximumError": "8kb"
+                        }
+                    ],
+                    "outputHashing": "all",
+                    "customWebpackConfig": {
+                        "path": "apps/ordersApp/webpack.prod.config.ts"
+                    }
+                },
+                "development": {
+                    "buildOptimizer": false,
+                    "optimization": false,
+                    "vendorChunk": true,
+                    "extractLicenses": false,
+                    "sourceMap": true,
+                    "namedChunks": true
+                }
+            },
+            "defaultConfiguration": "production"
+        },
+        "serve": {
+            "executor": "@nx/angular:dev-server",
+            "options": {
+                "port": 4206,
+                "publicHost": "http://localhost:4206"
+            },
+            "configurations": {
+                "production": {
+                    "buildTarget": "ordersApp:build:production"
+                },
+                "development": {
+                    "buildTarget": "ordersApp:build:development"
+                }
+            },
+            "defaultConfiguration": "development"
+        },
+        "extract-i18n": {
+            "executor": "@angular-devkit/build-angular:extract-i18n",
+            "options": {
+                "buildTarget": "ordersApp:build"
+            }
+        },
+        "lint": {
+            "executor": "@nx/eslint:lint"
+        },
+        "test": {
+            "executor": "@nx/jest:jest",
+            "outputs": ["{workspaceRoot}/coverage/{projectRoot}"],
+            "options": {
+                "jestConfig": "apps/ordersApp/jest.config.ts"
+            }
+        },
+        "serve-static": {
+            "executor": "@nx/web:file-server",
+            "defaultConfiguration": "production",
+            "options": {
+                "buildTarget": "ordersApp:build",
+                "port": 4206,
+                "watch": false
+            },
+            "configurations": {
+                "development": {
+                    "buildTarget": "ordersApp:build:development"
+                },
+                "production": {
+                    "buildTarget": "ordersApp:build:production"
+                }
+            }
+        }
+    }
+}
