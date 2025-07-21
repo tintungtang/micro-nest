@@ -1,0 +1,16 @@
+.mfe-order-button-link {
+  text-decoration: none;
+  color: inherit;
+  
+  &:hover {
+    color: #007bff;
+  }
+  
+  .badge {
+    font-size: 0.75rem;
+    
+    &.bg-primary {
+      background-color: #007bff !important;
+    }
+  }
+} 

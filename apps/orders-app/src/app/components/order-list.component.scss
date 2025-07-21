@@ -1,0 +1,23 @@
+.mfe-order-container {
+  padding: 1rem;
+  
+  .mfe-order-checkout-btn {
+    background-color: #28a745;
+    border-color: #28a745;
+    
+    &:hover {
+      background-color: #218838;
+      border-color: #1e7e34;
+    }
+  }
+  
+  .text-primary {
+    color: #007bff !important;
+  }
+  
+  .badge {
+    &.bg-primary {
+      background-color: #007bff !important;
+    }
+  }
+} 
