@@ -7,7 +7,4 @@ import { Component } from '@angular/core';
     styleUrl: './mfe-button.component.css',
 })
 export class MfeButtonComponent {
-    constructor() {
-        console.log('MfeButtonComponent');
-    }
 }

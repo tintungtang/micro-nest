@@ -24,4 +24,5 @@ RUN chown -R auth:auth .
 
 WORKDIR auth
 RUN npm install
+USER auth
 CMD ["node", "main.js"]

@@ -8,8 +8,8 @@ describe('App', () => {
         expect(baseElement).toBeTruthy();
     });
 
-    it('should have a greeting as the title', () => {
+    it('should render the cart title', () => {
         const { getByText } = render(<App />);
-        expect(getByText(/Welcome cart/gi)).toBeTruthy();
+        expect(getByText('Cart')).toBeTruthy();
     });
 });

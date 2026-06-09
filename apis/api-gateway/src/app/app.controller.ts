@@ -2,14 +2,21 @@ import { Controller, Get, Inject, Post, Body } from '@nestjs/common';
 import { ClientProxy } from '@nestjs/microservices';
 import { Observable } from 'rxjs';
 import { Throttle } from '@nestjs/throttler';
+import { AppService } from './app.service';
 
 @Controller()
 export class AppController {
     constructor(
         @Inject('AUTH_SERVICE') private readonly authServiceClient: ClientProxy,
         @Inject('PRODUCT_SERVICE') private readonly productServiceClient: ClientProxy,
-        @Inject('FILE_STORAGE_SERVICE') private readonly fileStorageServiceClient: ClientProxy
+        @Inject('FILE_STORAGE_SERVICE') private readonly fileStorageServiceClient: ClientProxy,
+        private readonly appService: AppService
     ) {
+    }
+
+    @Get()
+    getData(): { message: string } {
+        return this.appService.getData();
     }
 
     @Get('products')
@@ -41,5 +48,4 @@ export class AppController {
         return 'This route is rate-limited!';
     }
 }
-
 

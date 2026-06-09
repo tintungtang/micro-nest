@@ -25,9 +25,9 @@ export class FirebaseAdminService {
       } catch (err) {
         Logger.error('Failed to load Firebase credentials', err as any);
       }
-      this.app = admin.initializeApp({
-        credential: credential ? admin.credential.cert(credential) : undefined,
-      });
+      this.app = credential
+        ? admin.initializeApp({ credential: admin.credential.cert(credential) })
+        : admin.initializeApp();
     } else {
       this.app = admin.app();
     }

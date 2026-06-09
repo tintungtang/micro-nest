@@ -60,7 +60,6 @@
             }
         }
     ],
-    "nxCloudAccessToken": "YzE5OWI5MTEtODU2Ni00Y2U4LWI0NWItMjhkMDEyMjFjMmVkfHJlYWQtd3JpdGU=",
     "targetDefaults": {
         "@angular-devkit/build-angular:browser": {
             "cache": true,
@@ -138,5 +137,5 @@
             "unitTestRunner": "jest"
         }
     },
-    "useLegacyCache": true
+    "useLegacyCache": false
 }
