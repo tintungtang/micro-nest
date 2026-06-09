@@ -1,1 +1,3 @@
 node_modules
+dist
+apps/storefront/src/theme/js

@@ -1,4 +1,17 @@
-import { Component, Input, OnChanges, SimpleChanges, ViewContainerRef } from '@angular/core';
+import { Component, Input, OnChanges, SimpleChanges, Type, ViewContainerRef } from '@angular/core';
+
+declare const __webpack_init_sharing__: (scope: string) => Promise<void>;
+
+type RemoteContainer = {
+    init: (shareScope: unknown) => Promise<void>;
+    get: (module: string) => Promise<() => Record<string, Type<unknown>> | Type<unknown>>;
+};
+
+type ShareScopeWindow = Window & {
+    __webpack_share_scopes__?: {
+        default: unknown;
+    };
+};
 
 @Component({
     selector: 'mfe-ui-remote-wrapper',
@@ -9,7 +22,7 @@ export class RemoteWrapperComponent implements OnChanges {
     @Input() remoteName!: string;
     @Input() remoteUrl!: string;
     @Input() exposedModule!: string;
-    @Input() fallback!: () => Promise<any>;
+    @Input() fallback!: () => Promise<Type<unknown>>;
 
     constructor(private viewContainerRef: ViewContainerRef) {
     }
@@ -24,15 +37,16 @@ export class RemoteWrapperComponent implements OnChanges {
     private async load() {
         try {
             await this.loadRemoteEntry();
-            const container = (window as any)[this.remoteName];
+            const remoteWindow = window as unknown as Record<string, RemoteContainer | undefined>;
+            const container = remoteWindow[this.remoteName];
             if (!container) throw new Error(`Remote ${this.remoteName} not found`);
-            // @ts-ignore
             await __webpack_init_sharing__('default');
-            await container.init((window as any).__webpack_share_scopes__.default);
+            await container.init((window as ShareScopeWindow).__webpack_share_scopes__?.default);
             const factory = await container.get(this.exposedModule);
             const Module = factory();
-            const Component = Module.default || Module[Object.keys(Module)[0]] || Module;
-            this.viewContainerRef.createComponent(Component);
+            const remoteModule = Module as Record<string, Type<unknown>>;
+            const component = remoteModule['default'] || remoteModule[Object.keys(remoteModule)[0]] || Module as Type<unknown>;
+            this.viewContainerRef.createComponent(component);
         } catch (err) {
             console.error('Error loading remote component', err);
             try {
@@ -46,7 +60,8 @@ export class RemoteWrapperComponent implements OnChanges {
 
     private loadRemoteEntry(): Promise<void> {
         return new Promise<void>((resolve, reject) => {
-            if ((window as any)[this.remoteName]) {
+            const remoteWindow = window as unknown as Record<string, RemoteContainer | undefined>;
+            if (remoteWindow[this.remoteName]) {
                 resolve();
                 return;
             }

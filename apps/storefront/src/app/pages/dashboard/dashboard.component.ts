@@ -12,14 +12,10 @@ import { LatestBlogComponent } from './components/latest-blog.component';
 import { DownloadAppComponent } from './components/download-app.component';
 import { SearchTagsComponent } from './components/search-tags.component';
 import { FeaturesComponent } from './components/features.component';
-import { MfeButtonComponent } from 'shared-ui';
-import { SharedButtonComponent } from 'shared/SharedButtonComponent';
-import { BestSellingComponent } from 'product-app/BestSellingFragment';
 
 @Component({
     selector: 'mfe-storefront-dashboard',
     imports: [
-        SharedButtonComponent,
         CommonModule,
         HeroComponent,
         CategoriesComponent,
@@ -32,9 +28,7 @@ import { BestSellingComponent } from 'product-app/BestSellingFragment';
         LatestBlogComponent,
         DownloadAppComponent,
         SearchTagsComponent,
-        FeaturesComponent,
-        MfeButtonComponent,
-        BestSellingComponent
+        FeaturesComponent
     ],
     standalone: true,
     templateUrl: './dashboard.component.html'

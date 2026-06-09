@@ -2,7 +2,7 @@ import { Component, Input } from '@angular/core';
 import { MfeButtonComponent } from 'shared-ui';
 
 @Component({
-    selector: 'shared-button',
+    selector: 'ng-mf-shared-button',
     template: `
         <mfe-ui-button></mfe-ui-button>`,
     standalone: true,

@@ -21,6 +21,8 @@ RUN chown -R product:product .
 # The bundled output will include external dependencies.
 # RUN npm --prefix product --omit=dev -f install
 
-WORKDIR file-storage
+USER product
+
+WORKDIR product
 RUN npm install
 CMD ["node", "main.js"]
