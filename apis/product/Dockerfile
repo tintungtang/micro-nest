@@ -11,18 +11,19 @@ ENV PORT=3000
 
 WORKDIR /app
 
+RUN apk add --no-cache openssl
+
 RUN addgroup --system product && \
     adduser --system -G product product
 
-COPY dist/apis/product product/
-RUN chown -R product:product .
+COPY package.json package-lock.json ./
+COPY apis/product/prisma ./apis/product/prisma/
+RUN npm ci --omit=dev && \
+    npx prisma generate --schema apis/product/prisma/schema.prisma
 
-# You can remove this install step if you build with `--bundle` option.
-# The bundled output will include external dependencies.
-# RUN npm --prefix product --omit=dev -f install
+COPY dist/apis/product ./
+RUN chown -R product:product /app
 
 USER product
 
-WORKDIR product
-RUN npm install
 CMD ["node", "main.js"]

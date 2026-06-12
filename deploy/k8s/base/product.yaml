@@ -31,26 +31,11 @@ spec:
                 configMapKeyRef:
                   name: micro-nest-config
                   key: PRODUCT_SERVICE_PORT
-            - name: DB_CONNECTION_STRING
-              valueFrom:
-                configMapKeyRef:
-                  name: micro-nest-config
-                  key: DB_CONNECTION_STRING
-            - name: DB_NAME
-              valueFrom:
-                configMapKeyRef:
-                  name: micro-nest-config
-                  key: DB_NAME
-            - name: DB_ADMIN_USER
+            - name: DATABASE_URL
               valueFrom:
                 secretKeyRef:
                   name: product-db-secret
-                  key: DB_ADMIN_USER
-            - name: DB_ADMIN_PASSWORD
-              valueFrom:
-                secretKeyRef:
-                  name: product-db-secret
-                  key: DB_ADMIN_PASSWORD
+                  key: DATABASE_URL
           readinessProbe:
             httpGet:
               path: /api

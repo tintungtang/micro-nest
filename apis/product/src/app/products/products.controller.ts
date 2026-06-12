@@ -1,6 +1,6 @@
 import { Controller, Get, Post, Body, Param } from '@nestjs/common';
+import { Product } from '@prisma/client';
 import { ProductDTO } from './dto/product.dto';
-import { Product } from './interfaces/product.interface';
 import { ProductsService } from './products.service';
 import { MessagePattern } from '@nestjs/microservices';
 

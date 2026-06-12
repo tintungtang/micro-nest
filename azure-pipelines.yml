@@ -55,11 +55,12 @@ jobs:
       # Prepend any command with "nx-cloud record --" to record its logs to Nx Cloud
       # - script: yarn nx-cloud record -- echo Hello World
       - script: npx nx affected --base=$(BASE_SHA) --head=$(HEAD_SHA) --targets lint test build --parallel=3
-      - script: docker run -d --name micronest-mongo -p 27017:27017 -e MONGO_INITDB_ROOT_USERNAME=admin -e MONGO_INITDB_ROOT_PASSWORD=admin mongo:7
-        displayName: 'Start MongoDB for e2e'
+      - script: docker run -d --name micronest-postgres -p 5432:5432 -e POSTGRES_USER=product -e POSTGRES_PASSWORD=product -e POSTGRES_DB=mc_nest_products_e2e postgres:16-alpine
+        displayName: 'Start Postgres for e2e'
+      - script: npx prisma migrate deploy --schema apis/product/prisma/schema.prisma
+        displayName: 'Apply product database migrations'
+        env:
+          DATABASE_URL: postgresql://product:product@localhost:5432/mc_nest_products_e2e?schema=public
       - script: npx nx affected --base=$(BASE_SHA) --head=$(HEAD_SHA) --targets e2e e2e-ui --parallel=1
         env:
-          DB_CONNECTION_STRING: mongodb://localhost:27017/
-          DB_ADMIN_USER: admin
-          DB_ADMIN_PASSWORD: admin
-          DB_NAME: mc-nest-products-e2e
+          DATABASE_URL: postgresql://product:product@localhost:5432/mc_nest_products_e2e?schema=public
