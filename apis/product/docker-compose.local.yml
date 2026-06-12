@@ -1,19 +1,15 @@
 services:
-    my-mongodb:
-        image: mc-nest-product-db-image
+    product-postgres:
+        image: postgres:16-alpine
         container_name: mc-nest-product-db-container
         ports:
-            - 27017:27017
+            - 5432:5432
+        environment:
+            POSTGRES_USER: product
+            POSTGRES_PASSWORD: change-me
+            POSTGRES_DB: mc_nest_products
         volumes:
-            - mongodb:${DATA_VOLUME}
-            - mongoconfig:${CONFIG_VOLUME}
-        networks:
-            - mongo_net
+            - postgres-data:/var/lib/postgresql/data
 
 volumes:
-    mongodb:
-    mongoconfig:
-
-networks:
-    mongo_net:
-        driver: bridge
+    postgres-data:

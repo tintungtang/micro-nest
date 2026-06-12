@@ -3,10 +3,7 @@ import { exec, spawn } from 'child_process';
 process.env.HOST = 'localhost';
 process.env.PORT = '3102';
 process.env.PRODUCT_SERVICE_PORT = '3002';
-process.env.DB_CONNECTION_STRING = process.env.DB_CONNECTION_STRING ?? 'mongodb://localhost:27017/';
-process.env.DB_ADMIN_USER = process.env.DB_ADMIN_USER ?? 'admin';
-process.env.DB_ADMIN_PASSWORD = process.env.DB_ADMIN_PASSWORD ?? 'admin';
-process.env.DB_NAME = process.env.DB_NAME ?? 'mc-nest-products-e2e';
+process.env.DATABASE_URL = process.env.DATABASE_URL ?? 'postgresql://product:product@localhost:5432/mc_nest_products_e2e?schema=public';
 
 module.exports = async function() {
     console.log('\nSetting up...\n');
@@ -18,10 +15,7 @@ module.exports = async function() {
             ...process.env,
             PORT: process.env.PORT,
             PRODUCT_SERVICE_PORT: process.env.PRODUCT_SERVICE_PORT,
-            DB_CONNECTION_STRING: process.env.DB_CONNECTION_STRING,
-            DB_ADMIN_USER: process.env.DB_ADMIN_USER,
-            DB_ADMIN_PASSWORD: process.env.DB_ADMIN_PASSWORD,
-            DB_NAME: process.env.DB_NAME
+            DATABASE_URL: process.env.DATABASE_URL
         }
     });
 

@@ -28,6 +28,12 @@ cp deploy/docker/.env.example deploy/docker/.env
 npm run docker:up
 ```
 
+Apply product database migrations after Postgres is available:
+
+```bash
+npm run prisma:migrate:deploy
+```
+
 The root `docker-compose.yaml` includes `deploy/docker/compose.yaml`, so `docker compose up` from the repository root still works with Docker Compose v2.20 or newer.
 
 Default local endpoints:
@@ -41,7 +47,7 @@ Default local endpoints:
 
 ## Kubernetes
 
-Build and push images for your target registry, then update image names in `deploy/k8s/base/kustomization.yaml` or use a Kustomize overlay.
+Build and push images for your target registry, then update image names in `deploy/k8s/base/kustomization.yaml` or use a Kustomize overlay. Run the product Prisma migrations against the target `DATABASE_URL` before sending traffic to the product API.
 
 Apply the base manifests:
 
@@ -55,4 +61,4 @@ Remove them:
 npm run k8s:delete
 ```
 
-The base creates the `micro-nest` namespace, backend deployments, services, config, secrets, and persistent volume claims for MongoDB and file storage.
+The base creates the `micro-nest` namespace, backend deployments, services, config, secrets, and persistent volume claims for Postgres and file storage.

@@ -1,27 +1,31 @@
-import { BadRequestException, Inject, Injectable, NotFoundException } from '@nestjs/common';
-import { isValidObjectId, Model } from 'mongoose';
+import { BadRequestException, Injectable, NotFoundException } from '@nestjs/common';
+import { Product } from '@prisma/client';
+import { PrismaService } from '../database/prisma.service';
 import { ProductDTO } from './dto/product.dto';
-import { Product } from './interfaces/product.interface';
 
 @Injectable()
 export class ProductsService {
-    constructor(@Inject('PRODUCT_MODEL') private readonly productModel: Model<Product>) {
+    constructor(private readonly prisma: PrismaService) {
     }
 
     async create(productDTO: ProductDTO): Promise<Product> {
-        return this.productModel.create(productDTO);
+        return this.prisma.product.create({
+            data: productDTO,
+        });
     }
 
     async getProducts(): Promise<Product[]> {
-        return this.productModel.find().exec();
+        return this.prisma.product.findMany();
     }
 
     async getProduct(id: string): Promise<Product> {
-        if (!isValidObjectId(id)) {
+        if (!id.trim()) {
             throw new BadRequestException('Invalid product id');
         }
 
-        const product = await this.productModel.findById(id).exec();
+        const product = await this.prisma.product.findUnique({
+            where: { id },
+        });
         if (!product) {
             throw new NotFoundException('Product not found');
         }

@@ -11,5 +11,6 @@ data:
   FILE_STORAGE_SERVICE_HOST: file-storage
   FILE_STORAGE_SERVICE_PORT: "3003"
   FILE_STORAGE_ROOT: /app/data
-  DB_CONNECTION_STRING: mongodb://mongo:27017/
-  DB_NAME: mc-nest-products
+  POSTGRES_DB: mc_nest_products
+  POSTGRES_HOST: postgres
+  POSTGRES_PORT: "5432"

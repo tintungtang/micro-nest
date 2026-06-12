@@ -33,12 +33,9 @@ services:
     environment:
       PORT: 3000
       PRODUCT_SERVICE_PORT: 3002
-      DB_CONNECTION_STRING: mongodb://mongo:27017/
-      DB_ADMIN_USER: ${MONGO_ROOT_USER:-admin}
-      DB_ADMIN_PASSWORD: ${MONGO_ROOT_PASSWORD:-admin}
-      DB_NAME: ${PRODUCT_DB_NAME:-mc-nest-products}
+      DATABASE_URL: postgresql://${POSTGRES_USER:-product}:${POSTGRES_PASSWORD:-change-me}@postgres:5432/${POSTGRES_DB:-mc_nest_products}?schema=public
     depends_on:
-      - mongo
+      - postgres
 
   file-storage:
     image: ${FILE_STORAGE_IMAGE:-file-storage:latest}
@@ -51,16 +48,17 @@ services:
     volumes:
       - file-storage-data:${FILE_STORAGE_ROOT:-/app/data}
 
-  mongo:
-    image: mongo:7
+  postgres:
+    image: postgres:16-alpine
     ports:
-      - "${MONGO_PORT:-27017}:27017"
+      - "${POSTGRES_PORT:-5432}:5432"
     environment:
-      MONGO_INITDB_ROOT_USERNAME: ${MONGO_ROOT_USER:-admin}
-      MONGO_INITDB_ROOT_PASSWORD: ${MONGO_ROOT_PASSWORD:-admin}
+      POSTGRES_USER: ${POSTGRES_USER:-product}
+      POSTGRES_PASSWORD: ${POSTGRES_PASSWORD:-change-me}
+      POSTGRES_DB: ${POSTGRES_DB:-mc_nest_products}
     volumes:
-      - mongo-data:/data/db
+      - postgres-data:/var/lib/postgresql/data
 
 volumes:
   file-storage-data:
-  mongo-data:
+  postgres-data:
