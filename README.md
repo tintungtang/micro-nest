@@ -41,6 +41,7 @@ micro-nest/
 |   |-- shared/           # Shared UI micro-frontend
 |   |-- app-1/            # NestJS micro service
 |-- scripts/              # Utility scripts for project management
+|-- deploy/               # Docker Compose and Kubernetes deployment manifests
 |-- .gitignore            # Git ignore file
 |-- .eslintrc             # ESLint configuration file
 |-- .eslintignore         # ESLint ignore file
@@ -97,6 +98,10 @@ Targets can be defined in the `package.json` or `projects.json`. Learn more [in 
 ```
 nx run [appName]:docker-build
 ```
+Build all backend images:
+```
+npm run docker:build
+```
 ### Run the Docker Container
 ```
 docker run [appName]:latest
@@ -104,8 +109,19 @@ docker run [appName]:latest
 
 ### Docker Compose
 ```
-docker compose up
+npm run docker:up
 ```
+
+Copy `deploy/docker/.env.example` to `deploy/docker/.env` if you want a tracked list of local override values.
+
+The Docker and Kubernetes deployment scaffolding lives under [`deploy/`](deploy/README.md).
+
+### Kubernetes
+```
+npm run k8s:apply
+```
+
+Use `deploy/k8s/base/kustomization.yaml` to set registry-specific image names and tags before applying to a remote cluster.
 
 
 ## Adding a New Micro-Frontend

@@ -1,0 +1,15 @@
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: micro-nest-config
+data:
+  API_GATEWAY_PORT: "3000"
+  AUTH_SERVICE_HOST: auth
+  AUTH_SERVICE_PORT: "3001"
+  PRODUCT_SERVICE_HOST: product
+  PRODUCT_SERVICE_PORT: "3002"
+  FILE_STORAGE_SERVICE_HOST: file-storage
+  FILE_STORAGE_SERVICE_PORT: "3003"
+  FILE_STORAGE_ROOT: /app/data
+  DB_CONNECTION_STRING: mongodb://mongo:27017/
+  DB_NAME: mc-nest-products

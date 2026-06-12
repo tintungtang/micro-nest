@@ -1,0 +1,82 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: product
+  labels:
+    app.kubernetes.io/name: product
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app.kubernetes.io/name: product
+  template:
+    metadata:
+      labels:
+        app.kubernetes.io/name: product
+    spec:
+      containers:
+        - name: product
+          image: product:latest
+          imagePullPolicy: IfNotPresent
+          ports:
+            - name: http
+              containerPort: 3000
+            - name: tcp
+              containerPort: 3002
+          env:
+            - name: PORT
+              value: "3000"
+            - name: PRODUCT_SERVICE_PORT
+              valueFrom:
+                configMapKeyRef:
+                  name: micro-nest-config
+                  key: PRODUCT_SERVICE_PORT
+            - name: DB_CONNECTION_STRING
+              valueFrom:
+                configMapKeyRef:
+                  name: micro-nest-config
+                  key: DB_CONNECTION_STRING
+            - name: DB_NAME
+              valueFrom:
+                configMapKeyRef:
+                  name: micro-nest-config
+                  key: DB_NAME
+            - name: DB_ADMIN_USER
+              valueFrom:
+                secretKeyRef:
+                  name: product-db-secret
+                  key: DB_ADMIN_USER
+            - name: DB_ADMIN_PASSWORD
+              valueFrom:
+                secretKeyRef:
+                  name: product-db-secret
+                  key: DB_ADMIN_PASSWORD
+          readinessProbe:
+            httpGet:
+              path: /api
+              port: http
+            initialDelaySeconds: 10
+            periodSeconds: 10
+          livenessProbe:
+            httpGet:
+              path: /api
+              port: http
+            initialDelaySeconds: 30
+            periodSeconds: 20
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: product
+  labels:
+    app.kubernetes.io/name: product
+spec:
+  selector:
+    app.kubernetes.io/name: product
+  ports:
+    - name: http
+      port: 3000
+      targetPort: http
+    - name: tcp
+      port: 3002
+      targetPort: tcp

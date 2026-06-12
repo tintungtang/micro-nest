@@ -4,7 +4,12 @@
     "license": "MIT",
     "scripts": {
         "copy-package-json": "node scripts/create-package-json.js",
-        "custom-build": "nx build && npm run copy-package-json"
+        "custom-build": "nx build && npm run copy-package-json",
+        "docker:build": "nx run-many -t docker-build -p api-gateway auth product file-storage",
+        "docker:up": "docker compose -f deploy/docker/compose.yaml up -d",
+        "docker:down": "docker compose -f deploy/docker/compose.yaml down",
+        "k8s:apply": "kubectl apply -k deploy/k8s/base",
+        "k8s:delete": "kubectl delete -k deploy/k8s/base"
     },
     "private": true,
     "dependencies": {
