@@ -42,6 +42,10 @@
 │       ├── hub
 │       ├── styles
 │       └── ui
+├── deploy
+│   ├── docker
+│   └── k8s
+│       └── base
 ├── scripts
 └── templates
     └── organic-1.0.0

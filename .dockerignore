@@ -1,0 +1,13 @@
+.git
+.github
+.nx
+coverage
+node_modules
+npm-debug.log*
+.DS_Store
+.env
+.env.*
+!.env.example
+deploy/docker/.env
+deploy/docker/.env.*
+!deploy/docker/.env.example

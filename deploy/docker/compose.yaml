@@ -1,0 +1,66 @@
+name: micro-nest
+
+services:
+  api-gateway:
+    image: ${API_GATEWAY_IMAGE:-api-gateway:latest}
+    ports:
+      - "${API_GATEWAY_HTTP_PORT:-8080}:3000"
+    environment:
+      PORT: 3000
+      AUTH_SERVICE_HOST: auth
+      AUTH_SERVICE_PORT: 3001
+      PRODUCT_SERVICE_HOST: product
+      PRODUCT_SERVICE_PORT: 3002
+      FILE_STORAGE_SERVICE_HOST: file-storage
+      FILE_STORAGE_SERVICE_PORT: 3003
+    depends_on:
+      - auth
+      - product
+      - file-storage
+
+  auth:
+    image: ${AUTH_IMAGE:-auth:latest}
+    ports:
+      - "${AUTH_HTTP_PORT:-8081}:3000"
+    environment:
+      PORT: 3000
+      AUTH_SERVICE_PORT: 3001
+
+  product:
+    image: ${PRODUCT_IMAGE:-product:latest}
+    ports:
+      - "${PRODUCT_HTTP_PORT:-8082}:3000"
+    environment:
+      PORT: 3000
+      PRODUCT_SERVICE_PORT: 3002
+      DB_CONNECTION_STRING: mongodb://mongo:27017/
+      DB_ADMIN_USER: ${MONGO_ROOT_USER:-admin}
+      DB_ADMIN_PASSWORD: ${MONGO_ROOT_PASSWORD:-admin}
+      DB_NAME: ${PRODUCT_DB_NAME:-mc-nest-products}
+    depends_on:
+      - mongo
+
+  file-storage:
+    image: ${FILE_STORAGE_IMAGE:-file-storage:latest}
+    ports:
+      - "${FILE_STORAGE_HTTP_PORT:-8083}:3000"
+    environment:
+      PORT: 3000
+      FILE_STORAGE_SERVICE_PORT: 3003
+      FILE_STORAGE_ROOT: ${FILE_STORAGE_ROOT:-/app/data}
+    volumes:
+      - file-storage-data:${FILE_STORAGE_ROOT:-/app/data}
+
+  mongo:
+    image: mongo:7
+    ports:
+      - "${MONGO_PORT:-27017}:27017"
+    environment:
+      MONGO_INITDB_ROOT_USERNAME: ${MONGO_ROOT_USER:-admin}
+      MONGO_INITDB_ROOT_PASSWORD: ${MONGO_ROOT_PASSWORD:-admin}
+    volumes:
+      - mongo-data:/data/db
+
+volumes:
+  file-storage-data:
+  mongo-data:
