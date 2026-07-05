@@ -1,15 +1,18 @@
 import * as path from 'path';
-import { Body, Controller, Delete, Get, Param, Post, Put } from '@nestjs/common';
+import { BadRequestException, Body, Controller, Delete, Get, Param, Post, Put } from '@nestjs/common';
 import { DataItem, DynamicFileService } from './dynamic-file.service';
-import { v4 as uuidv4 } from 'uuid';
 
 @Controller('files')
 export class DynamicFileController {
+    private readonly storageRoot = path.resolve(process.env.FILE_STORAGE_ROOT ?? path.join(process.cwd(), 'data'));
+
     constructor(private readonly dataService: DynamicFileService) {}
 
     private getFilePathFromParams(params: string[], directoryListing = true): string {
         const pathParam = params.pop();
-        if (!pathParam) throw new Error('Invalid path');
+        if (!pathParam) {
+            throw new BadRequestException('Invalid path');
+        }
 
         const factors = pathParam.split('/');
         const id = factors.pop();
@@ -17,7 +20,22 @@ export class DynamicFileController {
         const isFile = !isNaN(Number(id));
         const fileName = isFile ? `${id}.json` : (directoryListing ? '' : `${Date.now()}.json`);
 
-        return path.join(__dirname, ...factors, fileName);
+        const requestPath = path.resolve(this.storageRoot, ...factors, fileName);
+        const relativePath = path.relative(this.storageRoot, requestPath);
+        if (relativePath.startsWith('..') || path.isAbsolute(relativePath)) {
+            throw new BadRequestException('Invalid path');
+        }
+
+        return requestPath;
+    }
+
+    private parseId(id: string | undefined): number {
+        const parsedId = Number(id);
+        if (!id || !Number.isInteger(parsedId) || parsedId < 0) {
+            throw new BadRequestException('Invalid ID');
+        }
+
+        return parsedId;
     }
 
     @Get('*')
@@ -29,11 +47,10 @@ export class DynamicFileController {
     @Get('*/*')
     getById(@Param() params: Record<string, string>): DataItem | { message: string } {
         const values = Object.values(params);
-        const id = values.pop();
-        if (!id) return { message: 'ID not provided' };
+        const id = this.parseId(values.pop());
 
         const requestPath = this.getFilePathFromParams(values);
-        const item = this.dataService.getById(requestPath, Number(id));
+        const item = this.dataService.getById(requestPath, id);
         return item || { message: 'Item not found' };
     }
 
@@ -47,11 +64,10 @@ export class DynamicFileController {
     @Put('*/*')
     update(@Param() params: Record<string, string>, @Body() updatedItem: Partial<DataItem>): { message: string } {
         const values = Object.values(params);
-        const id = values.pop();
-        if (!id) return { message: 'ID not provided' };
+        const id = this.parseId(values.pop());
 
         const requestPath = this.getFilePathFromParams(values);
-        const success = this.dataService.update(requestPath, Number(id), updatedItem);
+        const success = this.dataService.update(requestPath, id, updatedItem);
         return success
             ? { message: 'Item updated successfully' }
             : { message: 'Item not found' };
@@ -60,11 +76,10 @@ export class DynamicFileController {
     @Delete('*/*')
     delete(@Param() params: Record<string, string>): { message: string } {
         const values = Object.values(params);
-        const id = values.pop();
-        if (!id) return { message: 'ID not provided' };
+        const id = this.parseId(values.pop());
 
         const requestPath = this.getFilePathFromParams(values);
-        const success = this.dataService.delete(requestPath, Number(id));
+        const success = this.dataService.delete(requestPath, id);
         return success
             ? { message: 'Item deleted successfully' }
             : { message: 'Item not found' };

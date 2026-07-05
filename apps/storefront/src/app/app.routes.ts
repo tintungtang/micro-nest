@@ -1,5 +1,5 @@
 import { Route } from '@angular/router';
-import { loadRemoteWithFallback } from 'hub';
+import { loadRemoteModule } from '@nx/angular/mf';
 
 export const appRoutes: Route[] = [
   {
@@ -10,7 +10,7 @@ export const appRoutes: Route[] = [
   {
       path: 'auth',
       loadChildren: () =>
-          import('auth-app/Routes').then((m) => m.remoteRoutes),
+          loadRemoteModule('auth-app', './Routes').then((m) => m.remoteRoutes),
   },
   {
       path: 'orders',

@@ -29,7 +29,13 @@ export class FirebaseAuthGuard implements CanActivate {
         context.getClass(),
       ]);
       if (requiredRoles && requiredRoles.length) {
-        const userRoles: string[] = (decoded as any).roles || (decoded as any).role ? [ (decoded as any).role ] : [];
+        const rolesClaim = (decoded as any).roles;
+        const roleClaim = (decoded as any).role;
+        const userRoles: string[] = Array.isArray(rolesClaim)
+          ? rolesClaim
+          : roleClaim
+            ? [roleClaim]
+            : [];
         const hasRole = requiredRoles.some((role) => userRoles.includes(role));
         if (!hasRole) {
           throw new ForbiddenException('Insufficient role');
@@ -37,6 +43,10 @@ export class FirebaseAuthGuard implements CanActivate {
       }
       return true;
     } catch (err) {
+      if (err instanceof ForbiddenException) {
+        throw err;
+      }
+
       throw new UnauthorizedException('Invalid token');
     }
   }

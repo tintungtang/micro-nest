@@ -2,10 +2,10 @@ import { Component } from '@angular/core';
 import { CommonModule } from '@angular/common';
 
 @Component({
-  selector: 'mfe-storefront-category-section',
-  standalone: true,
-    imports: [CommonModule],
-  templateUrl: './categories.component.html',
+    selector: 'mfe-storefront-category-section',
+    imports: [ CommonModule ],
+    standalone: true,
+    templateUrl: './categories.component.html'
 })
 export class CategoriesComponent {
   categories = [

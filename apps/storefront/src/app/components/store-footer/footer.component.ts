@@ -1,7 +1,7 @@
 import { Component } from '@angular/core';
 
 @Component({
-    selector: 'app-store-footer',
+    selector: 'mfe-storefront-footer',
     templateUrl: './footer.component.html',
     standalone: true
 })

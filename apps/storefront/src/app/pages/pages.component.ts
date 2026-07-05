@@ -6,9 +6,8 @@ import { FooterComponent } from '../components/store-footer/footer.component';
 
 @Component({
     selector: 'mfe-storefront-pages',
-    standalone: true,
-    imports: [ CommonModule, RouterOutlet, HeaderComponent, FooterComponent ],
+    imports: [CommonModule, RouterOutlet, HeaderComponent, FooterComponent],
     templateUrl: './pages.component.html',
-    styleUrl: './pages.component.css',
+    styleUrl: './pages.component.css'
 })
 export class PagesComponent {}

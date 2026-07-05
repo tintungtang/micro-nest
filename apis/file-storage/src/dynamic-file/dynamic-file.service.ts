@@ -1,4 +1,4 @@
-import { Injectable, NotFoundException } from '@nestjs/common';
+import { Injectable, InternalServerErrorException, NotFoundException } from '@nestjs/common';
 import * as fs from 'fs';
 import path from 'path';
 
@@ -28,7 +28,11 @@ export class DynamicFileService {
         }
 
         const rawData = fs.readFileSync(filePath, 'utf-8');
-        return JSON.parse(rawData);
+        try {
+            return JSON.parse(rawData);
+        } catch {
+            throw new InternalServerErrorException('Stored file contains invalid JSON');
+        }
     }
 
     private writeData(filePath: string, data: DataItem[]): void {
@@ -70,7 +74,7 @@ export class DynamicFileService {
 
     readAllFilesInFolder(folderPath: string): DataItem[] {
         if (!fs.existsSync(folderPath)) {
-            throw new Error('Folder does not exist');
+            throw new NotFoundException('Folder does not exist');
         }
 
         const files = fs.readdirSync(folderPath).filter(file => file.endsWith('.json'));

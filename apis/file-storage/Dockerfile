@@ -23,4 +23,5 @@ RUN chown -R file-storage:file-storage .
 
 WORKDIR file-storage
 RUN npm install
+USER file-storage
 CMD ["node", "main.js"]

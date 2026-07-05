@@ -25,7 +25,7 @@ export default defineConfig({
     },
     /* Run your local dev server before starting the tests */
     webServer: {
-        command: 'npx nx serve product-app',
+        command: 'npx nx run product-app:serve-static',
         url: 'http://localhost:4203',
         reuseExistingServer: !process.env.CI,
         cwd: workspaceRoot,

@@ -5,8 +5,8 @@ import { ProductCardComponent } from './product-card.component';
 
 @Component({
     selector: 'mfe-product-best-selling-section',
-    standalone: true,
     imports: [ CommonModule, MfeButtonComponent, ProductCardComponent ],
+    standalone: true,
     templateUrl: './best-selling.component.html'
 })
 export class BestSellingComponent {
