@@ -8,6 +8,6 @@ import { MfeButtonComponent } from 'shared-ui';
         MfeButtonComponent
     ],
     selector: 'ng-mf-shared-entry',
-    template: `<mfe-ui-button></mfe-ui-button>`
+    template: `<mfe-ui-button>Shared UI Button</mfe-ui-button>`
 })
 export class RemoteEntryComponent {}

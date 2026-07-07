@@ -5,6 +5,7 @@ const config: ModuleFederationConfig = {
 
     exposes: {
         './CartButton': './src/app/components/cart-button.component.tsx',
+        './CartPage': './src/app/cart-page.element.tsx',
     },
 };
 

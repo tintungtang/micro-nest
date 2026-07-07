@@ -1,80 +1,72 @@
-import { Component } from '@angular/core';
+import { Component, OnDestroy, OnInit } from '@angular/core';
 import { CommonModule } from '@angular/common';
-
-interface OrderItem {
-  name: string;
-  description: string;
-  price: string;
-}
+import { RouterLink } from '@angular/router';
+import { MfeBadgeComponent, MfeHeaderComponent } from 'shared-ui';
+import { getOrders, MFE_EVENTS, Order } from 'hub';
 
 @Component({
   standalone: true,
-  imports: [CommonModule],
+  imports: [CommonModule, RouterLink, MfeBadgeComponent, MfeHeaderComponent],
   selector: 'mfe-order-list',
   template: `
-    <div class="order-md-last">
-      <h4 class="d-flex justify-content-between align-items-center mb-3">
-        <span class="text-primary">Your cart</span>
-        <span class="badge bg-primary rounded-pill">{{ orders.length }}</span>
-      </h4>
-      <ul class="list-group mb-3">
-        <li 
-          class="list-group-item d-flex justify-content-between lh-sm"
+    <section class="container py-4">
+      <mfe-ui-header
+        title="Your orders"
+        subtitle="Orders placed from the checkout appear here"
+      ></mfe-ui-header>
+
+      <p *ngIf="orders.length === 0" class="text-muted">
+        You have no orders yet. Add products to your cart and check out to create one.
+      </p>
+
+      <div class="list-group" *ngIf="orders.length > 0">
+        <a
           *ngFor="let order of orders"
+          [routerLink]="[order.id]"
+          class="list-group-item list-group-item-action d-flex justify-content-between align-items-center gap-3 py-3"
         >
           <div>
-            <h6 class="my-0">{{ order.name }}</h6>
-            <small class="text-body-secondary">{{ order.description }}</small>
+            <h6 class="my-0">{{ order.id }}</h6>
+            <small class="text-body-secondary">
+              {{ order.placedAt | date: 'medium' }} &middot; {{ itemCount(order) }} item(s)
+            </small>
           </div>
-          <span class="text-body-secondary">{{ order.price }}</span>
-        </li>
-        <li class="list-group-item d-flex justify-content-between">
-          <span>Total (USD)</span>
-          <strong>{{ total }}</strong>
-        </li>
-      </ul>
-
-      <button class="w-100 btn btn-primary btn-lg" type="submit">Continue to checkout</button>
-    </div>
-  `,
-  styles: [`
-    .badge {
-      font-size: 0.75em;
-    }
-    .text-primary {
-      color: #0d6efd !important;
-    }
-    .bg-primary {
-      background-color: #0d6efd !important;
-    }
-    .text-body-secondary {
-      color: #6c757d !important;
-    }
-  `]
+          <div class="d-flex align-items-center gap-3">
+            <mfe-ui-badge [variant]="badgeVariant(order)">{{ order.status }}</mfe-ui-badge>
+            <strong>\${{ order.total.toFixed(2) }}</strong>
+          </div>
+        </a>
+      </div>
+    </section>
+  `
 })
-export class OrderListComponent {
-  orders: OrderItem[] = [
-    {
-      name: 'Growers cider',
-      description: 'Brief description',
-      price: '$12'
-    },
-    {
-      name: 'Fresh grapes',
-      description: 'Brief description',
-      price: '$8'
-    },
-    {
-      name: 'Heinz tomato ketchup',
-      description: 'Brief description',
-      price: '$5'
-    }
-  ];
+export class OrderListComponent implements OnInit, OnDestroy {
+  orders: Order[] = [];
+  private readonly refresh = () => (this.orders = getOrders());
 
-  get total(): string {
-    const sum = this.orders.reduce((acc, order) => {
-      return acc + parseInt(order.price.replace('$', ''));
-    }, 0);
-    return `$${sum}`;
+  ngOnInit(): void {
+    this.refresh();
+    window.addEventListener(MFE_EVENTS.ordersChanged, this.refresh);
   }
-} 
+
+  ngOnDestroy(): void {
+    window.removeEventListener(MFE_EVENTS.ordersChanged, this.refresh);
+  }
+
+  itemCount(order: Order): number {
+    return order.items.reduce((sum, item) => sum + item.quantity, 0);
+  }
+
+  badgeVariant(order: Order): 'success' | 'info' | 'warning' | 'danger' {
+    switch (order.status) {
+      case 'Delivered':
+        return 'success';
+      case 'Shipped':
+        return 'info';
+      case 'Cancelled':
+        return 'danger';
+      default:
+        return 'warning';
+    }
+  }
+}

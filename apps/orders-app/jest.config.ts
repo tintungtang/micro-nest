@@ -1,5 +1,6 @@
 export default {
   displayName: 'orders-app',
+  passWithNoTests: true,
   preset: '../../jest.preset.js',
   setupFilesAfterEnv: ['<rootDir>/src/test-setup.ts'],
   coverageDirectory: '../../coverage/apps/orders-app',

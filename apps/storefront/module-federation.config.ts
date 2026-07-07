@@ -1,14 +1,14 @@
 import { ModuleFederationConfig } from '@nx/module-federation';
 
+/**
+ * The storefront is a dynamic host: remote URLs are resolved at runtime
+ * from public/module-federation.manifest.json (see src/app/remote-config.ts),
+ * so no static remotes are declared here. Declaring them both places would
+ * make the Nx MF dev-server proxy every remote twice (EADDRINUSE).
+ */
 const config: ModuleFederationConfig = {
     name: 'storefront',
-    remotes: [
-        ['auth-app', process.env.AUTH_APP_REMOTE_URL ?? 'http://localhost:4202/remoteEntry.mjs'],
-        ['product-app', process.env.PRODUCT_APP_REMOTE_URL ?? 'http://localhost:4203/remoteEntry.mjs'],
-        ['cart', process.env.CART_REMOTE_URL ?? 'http://localhost:4204/remoteEntry.js'],
-        ['orders-app', process.env.ORDERS_APP_REMOTE_URL ?? 'http://localhost:4206/remoteEntry.mjs'],
-        ['shared', process.env.SHARED_REMOTE_URL ?? 'http://localhost:4205/remoteEntry.mjs']
-    ],
+    remotes: [],
 };
 
 export default config;

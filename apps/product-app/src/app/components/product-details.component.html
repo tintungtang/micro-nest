@@ -1,1 +1,37 @@
-<p>product-details works!</p>
+<section class="container py-4">
+    <nav class="mb-3">
+        <a routerLink="../" class="text-decoration-none">&larr; Back to products</a>
+    </nav>
+
+    <mfe-ui-card *ngIf="product; else notFound">
+        <div class="row g-4 align-items-center">
+            <div class="col-md-5 text-center">
+                <img
+                    [src]="product.imageUrl"
+                    [alt]="product.name"
+                    class="img-fluid"
+                    style="max-height: 320px"
+                />
+            </div>
+            <div class="col-md-7">
+                <mfe-ui-badge variant="info">{{ product.category }}</mfe-ui-badge>
+                <h1 class="mt-2 mb-3 fs-2 fw-bold">{{ product.name }}</h1>
+                <p class="text-muted">{{ product.description }}</p>
+                <p class="fs-3 fw-semibold mb-4">${{ product.price }}</p>
+
+                <mfe-ui-button variant="primary" (clicked)="onAddToCart()">
+                    Add to Cart
+                </mfe-ui-button>
+                <mfe-ui-badge variant="success" class="ms-2" *ngIf="justAdded">
+                    Added to cart!
+                </mfe-ui-badge>
+            </div>
+        </div>
+    </mfe-ui-card>
+
+    <ng-template #notFound>
+        <mfe-ui-card title="Product not found">
+            <p class="mb-0">The product you are looking for does not exist.</p>
+        </mfe-ui-card>
+    </ng-template>
+</section>

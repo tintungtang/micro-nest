@@ -10,6 +10,6 @@ describe('App', () => {
 
     it('should render the cart title', () => {
         const { getByText } = render(<App />);
-        expect(getByText('Cart')).toBeTruthy();
+        expect(getByText('Shopping cart')).toBeTruthy();
     });
 });

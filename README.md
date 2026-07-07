@@ -10,6 +10,7 @@ Welcome to **MicroNest**! This project showcases the implementation of a micro-f
 
 ## Table of Contents
 
+- [E-Commerce MFE Platform (Assignment)](#e-commerce-mfe-platform-assignment)
 - [Overview](#overview)
 - [Project Structure](#project-structure)
 - [Getting Started](#getting-started)
@@ -19,6 +20,63 @@ Welcome to **MicroNest**! This project showcases the implementation of a micro-f
 - [Technologies Used](#technologies-used)
 - [Contributing](#contributing)
 - [License](#license)
+
+## E-Commerce MFE Platform (Assignment)
+
+The platform follows **Option 1 — Webpack Module Federation** with one team/app per business domain:
+
+| Team / MFE | App | Framework | Port | Exposes (Module Federation) | Mounted in shell at |
+|---|---|---|---|---|---|
+| Shell | `apps/storefront` | Angular 19 | 4200 | — (host) | — |
+| Products | `apps/product-app` | Angular 19 | 4203 | `./Routes`, `./BestSellingFragment` | `/pages/products`, dashboard fragment |
+| Orders | `apps/orders-app` | Angular 19 | 4206 | `./Routes`, `./OrderButton` | `/orders`, header button |
+| Account | `apps/auth-app` | Angular 19 | 4202 | `./Routes` (login), `./AccountRoutes` (profile) | `/auth`, `/account` |
+| Checkout | `apps/cart` | **React 18** | 4204 | `./CartButton`, `./CartPage` (custom elements) | header button, `/cart` |
+| Shared UI | `apps/shared` | Angular 19 | 4205 | `./SharedButtonComponent`, `./SharedCardComponent`, `./SharedBadgeComponent`, `./SharedHeaderComponent` | on demand |
+
+The React remotes integrate through **web components** (`<mfe-cart-button>`, `<mfe-cart-page>`); the Angular remotes integrate through **route-level federation** (`loadRemoteModule(..., './Routes')`) and **component-level federation** (`ngComponentOutlet` for the order button, dashboard best-selling fragment with a fallback component).
+
+### Features
+
+- **Shell** — global layout (header/footer wrap every route), navigation menu with router links, authentication state in the header (sign in / greeting + sign out), route guard (`officerGuard`) protecting `/orders` and `/account`, runtime remote resolution via `module-federation.manifest.json`.
+- **Products** — product list (`/pages/products`) with search filtering, product detail (`/pages/products/:id`), Add to Cart from both pages.
+- **Orders** — order list (`/orders`) and order detail (`/orders/:id`) fed by orders placed at checkout.
+- **Account** — login (`/auth/login`), user information + update-profile form (`/account`).
+- **Checkout** — shopping cart page (`/cart`) with quantities, remove buttons, checkout summary (subtotal/shipping/total) and **Place order**, which creates an order the Orders MFE displays.
+
+### Communication (Part 2 — three mechanisms)
+
+1. **Custom Events** (`libs/shared/hub` → `MFE_EVENTS`): `cart:add`/`cart:changed` (product → cart & order buttons), `orders:changed` (checkout → orders), `auth:changed` (account → shell header), `mfe:navigate` (remotes ask the shell router to navigate — keeps remotes router-agnostic).
+2. **Shared Store** (`libs/shared/hub` → `store.ts`): a localStorage-backed store with a single owner of writes — keys `CART_ITEMS`, `ORDERS`, `USER_PROFILE`, `userRole` — shared by Angular *and* React MFEs, plus the singleton `EventBus`.
+3. **URL State**: the shell search box navigates to `/pages/products?q=...` (read by the Products MFE); product/order ids travel in route params (`/pages/products/:id`, `/orders/:id`).
+
+### Shared UI (Part 3)
+
+`libs/shared/ui` provides reusable standalone components used across the MFEs: **Button** (`mfe-ui-button`), **Card** (`mfe-ui-card`), **Header** (`mfe-ui-header`), **Badge** (`mfe-ui-badge`). The `apps/shared` remote also exposes them at runtime via Module Federation.
+
+### Run it
+
+```bash
+npm install
+npx nx serve storefront            # serves the shell + all remotes statically
+# or, for live-reload on a remote you are editing:
+npx nx serve storefront --devRemotes=product-app
+```
+
+Open http://localhost:4200 — flow: browse products → add to cart → open cart → place order → see it in orders; sign in via `/auth/login`, then edit your profile at `/account`.
+
+### Screenshots & Demo
+
+Full demo video: [docs/demo/demo.mp4](docs/demo/demo.mp4) (also [demo.webm](docs/demo/demo.webm)).
+
+| | |
+|---|---|
+| ![Shell dashboard](docs/screenshots/01-shell-dashboard.png) Shell: global layout + nav | ![Best-selling fragment](docs/screenshots/02-dashboard-best-selling-fragment.png) Dashboard renders the Products remote fragment |
+| ![Product list](docs/screenshots/03-products-list.png) Products MFE: product list | ![Search via URL state](docs/screenshots/04-products-search-url-state.png) Search → `/pages/products?q=…` (URL state) |
+| ![Product detail](docs/screenshots/05-product-detail.png) Products MFE: product detail | ![Added to cart](docs/screenshots/06-product-added-to-cart.png) Add to Cart → custom event updates header badges |
+| ![Cart & checkout summary](docs/screenshots/07-cart-checkout-summary.png) Checkout MFE (React) inside the Angular shell | ![Auth guard](docs/screenshots/08-auth-guard-login.png) Route guard redirects `/orders` to login |
+| ![Order confirmation](docs/screenshots/10-order-confirmation.png) Place order → shared store creates the order | ![Orders list](docs/screenshots/11-orders-list.png) Orders MFE: order list |
+| ![Order detail](docs/screenshots/12-order-detail.png) Orders MFE: order detail | ![Account profile](docs/screenshots/13-account-profile.png) Account MFE: user info + update profile |
 
 ## Overview
 

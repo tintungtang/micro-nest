@@ -1,0 +1,46 @@
+.mfe-btn {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0.5rem;
+    padding: 0.5rem 1.25rem;
+    border-radius: 0.375rem;
+    border: 1px solid transparent;
+    font-size: 0.9rem;
+    font-weight: 600;
+    cursor: pointer;
+    transition: background-color 0.15s ease, border-color 0.15s ease;
+}
+
+.mfe-btn:disabled {
+    opacity: 0.55;
+    cursor: not-allowed;
+}
+
+.mfe-btn-primary {
+    background-color: #6bb252;
+    color: #fff;
+}
+
+.mfe-btn-primary:hover:not(:disabled) {
+    background-color: #578e43;
+}
+
+.mfe-btn-secondary {
+    background-color: #fff;
+    border-color: #ced4da;
+    color: #212529;
+}
+
+.mfe-btn-secondary:hover:not(:disabled) {
+    border-color: #212529;
+}
+
+.mfe-btn-danger {
+    background-color: #dc3545;
+    color: #fff;
+}
+
+.mfe-btn-danger:hover:not(:disabled) {
+    background-color: #b02a37;
+}
